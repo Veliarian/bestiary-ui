@@ -101,6 +101,22 @@ async function buildComponents() {
     await fixPackageJson(resolve(pkgDir, 'components/package.json'), resolve(dest, 'package.json'))
 }
 
+async function buildIcons() {
+    console.log('✨ Building Icons...')
+    const dest = resolve(distDir, 'icons')
+    await clean(dest)
+
+    // 1. Generate Vue components from SVGs
+    console.log('🏃 Generating components...')
+    execSync('tsx scripts/generate-icons.ts', { stdio: 'inherit', cwd: root })
+
+    // 2. Build with Vite
+    execSync('vite build', { stdio: 'inherit', cwd: resolve(pkgDir, 'icons') })
+
+    console.log('📦 Finalizing Icons...')
+    await fixPackageJson(resolve(pkgDir, 'icons/package.json'), resolve(dest, 'package.json'))
+}
+
 async function build() {
     if (buildAll) {
         console.log('🧹 Cleaning All...')
@@ -116,6 +132,10 @@ async function build() {
 
     if (buildAll || args.includes('--style')) {
         await buildStyle()
+    }
+
+    if (buildAll || args.includes('--icons')) {
+        await buildIcons()
     }
 
     if (buildAll || args.includes('--components')) {

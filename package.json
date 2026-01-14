@@ -11,6 +11,7 @@
     "build:components": "tsx scripts/build.ts --components",
     "build:utils": "tsx scripts/build.ts --utils",
     "build:style": "tsx scripts/build.ts --style",
+    "build:icons": "tsx scripts/build.ts --icons",
     "typecheck": "vue-tsc --noEmit -p tsconfig.base.json --composite false"
   },
   "devDependencies": {

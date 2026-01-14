@@ -11,6 +11,7 @@
         "@bestiary-ui/components": "file:../packed/bestiary-ui-components-0.0.1.tgz",
         "@bestiary-ui/style": "file:../packed/bestiary-ui-style-0.0.1.tgz",
         "@bestiary-ui/utils": "file:../packed/bestiary-ui-utils-0.0.1.tgz",
+        "@bestiary-ui/icons": "file:../packed/bestiary-ui-icons-0.0.1.tgz",
         "vue": "^3.4.0"
     },
     "devDependencies": {

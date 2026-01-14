@@ -57,6 +57,22 @@ importers:
         specifier: ^3.4.0
         version: 3.5.26(typescript@5.9.3)
 
+  packages/icons:
+    dependencies:
+      vue:
+        specifier: ^3.4.0
+        version: 3.5.26(typescript@5.9.3)
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^5.0.0
+        version: 5.2.4(vite@5.4.21(@types/node@20.19.29))(vue@3.5.26(typescript@5.9.3))
+      vite:
+        specifier: ^5.0.0
+        version: 5.4.21(@types/node@20.19.29)
+      vite-plugin-dts:
+        specifier: ^4.5.4
+        version: 4.5.4(@types/node@20.19.29)(rollup@4.55.1)(typescript@5.9.3)(vite@5.4.21(@types/node@20.19.29))
+
   packages/style: {}
 
   packages/utils:
@@ -98,6 +114,9 @@ importers:
       '@bestiary-ui/components':
         specifier: file:../packed/bestiary-ui-components-0.0.1.tgz
         version: file:packed/bestiary-ui-components-0.0.1.tgz(vue@3.5.26(typescript@5.9.3))
+      '@bestiary-ui/icons':
+        specifier: file:../packed/bestiary-ui-icons-0.0.1.tgz
+        version: file:packed/bestiary-ui-icons-0.0.1.tgz(vue@3.5.26(typescript@5.9.3))
       '@bestiary-ui/style':
         specifier: file:../packed/bestiary-ui-style-0.0.1.tgz
         version: file:packed/bestiary-ui-style-0.0.1.tgz
@@ -149,6 +168,12 @@ packages:
     peerDependencies:
       vue: ^3.4.0
 
+  '@bestiary-ui/icons@file:packed/bestiary-ui-icons-0.0.1.tgz':
+    resolution: {integrity: sha512-Ei0C0oWalF2ax+N0/wucNVYR+2dDjptCSkv3tBAssz81yE0nQpnWxcXLNShjvInK5V4tuTSCBK0Lw9JbBaLZAQ==, tarball: file:packed/bestiary-ui-icons-0.0.1.tgz}
+    version: 0.0.1
+    peerDependencies:
+      vue: ^3.4.0
+
   '@bestiary-ui/style@0.0.1':
     resolution: {integrity: sha512-mVmvFNpABBszCkICZJd/57jQybpvoh1byKm4yh3On5DIplAfy3+z8zJ+ksrwISkq9kvnZLJLiIK+xFb5iQD52Q==}
 
@@ -162,7 +187,7 @@ packages:
       vue: ^3.4.0
 
   '@bestiary-ui/utils@file:packed/bestiary-ui-utils-0.0.1.tgz':
-    resolution: {integrity: sha512-QVEhwdxV49HREdxcOVZ96OH1AmGy/Gz8iLoTi+9HycpwONAdLaqilCJDiwm+1ex5vgLu1Oi7ADeR9S5CUVkJOg==, tarball: file:packed/bestiary-ui-utils-0.0.1.tgz}
+    resolution: {integrity: sha512-W79EXLauXoLSQTXCTUER6JDC/qT4Y2OOzMSjxfBg0larT0Pj1wQ2D1iRVSWHkhK350xYgnfTGYBz93/9szcQLQ==, tarball: file:packed/bestiary-ui-utils-0.0.1.tgz}
     version: 0.0.1
     peerDependencies:
       vue: ^3.4.0
@@ -1174,6 +1199,10 @@ snapshots:
     dependencies:
       '@bestiary-ui/style': 0.0.1
       '@bestiary-ui/utils': 0.0.1(vue@3.5.26(typescript@5.9.3))
+      vue: 3.5.26(typescript@5.9.3)
+
+  '@bestiary-ui/icons@file:packed/bestiary-ui-icons-0.0.1.tgz(vue@3.5.26(typescript@5.9.3))':
+    dependencies:
       vue: 3.5.26(typescript@5.9.3)
 
   '@bestiary-ui/style@0.0.1': {}

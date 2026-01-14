@@ -47,16 +47,37 @@
           </template>
         </Card>
       </div>
+    <div class="section">
+      <h2>Icons (Build Verification)</h2>
+      <div class="row">
+        <BeakerIcon24Solid class="icon-md text-primary" />
+        <BeakerIcon24Outline class="icon-md text-warning" />
+        <BeakerIcon20Solid class="icon-sm text-success" />
+        <BeakerIcon16Solid class="icon-xs text-danger" />
+      </div>
     </div>
+  </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import Button from '@bestiary-ui/components/button'
 import Card from '@bestiary-ui/components/card'
+import { BeakerIcon as BeakerIcon24Solid } from '@bestiary-ui/icons/24/solid'
+import { BeakerIcon as BeakerIcon24Outline } from '@bestiary-ui/icons/24/outline'
+import { BeakerIcon as BeakerIcon20Solid } from '@bestiary-ui/icons/20/solid'
+import { BeakerIcon as BeakerIcon16Solid } from '@bestiary-ui/icons/16/solid'
 </script>
 
 <style>
+.icon-xs { width: 16px; height: 16px; }
+.icon-sm { width: 20px; height: 20px; }
+.icon-md { width: 24px; height: 24px; }
+
+.text-primary { color: var(--b-primary-color); }
+.text-success { color: var(--b-success-color); }
+.text-warning { color: var(--b-warning-color); }
+.text-danger { color: var(--b-danger-color); }
 .container {
   padding: 2rem;
   font-family: var(--b-font-family);
