@@ -53,12 +53,12 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--b-font-family);
     font-weight: var(--b-font-weight-bold);
     line-height: var(--b-line-height-tight);
-    color: var(--b-text-title, inherit);
+    color: var(--b-text-main, inherit);
     margin-bottom: 0.5em;
 }
 
 h1 { font-size: var(--b-font-size-5xl); letter-spacing: var(--b-letter-spacing-tight); }
-h2 { font-size: var(--b-font-size-4xl); letter-spacing: var(--b-letter-spacing-tight); }
+h2 { font-size: var(--b-font-size-2xl); letter-spacing: var(--b-letter-spacing-tight); }
 h3 { font-size: var(--b-font-size-3xl); }
 h4 { font-size: var(--b-font-size-2xl); }
 h5 { font-size: var(--b-font-size-xl); }

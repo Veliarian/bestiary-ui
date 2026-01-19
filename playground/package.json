@@ -11,6 +11,7 @@
         "@bestiary-ui/components": "workspace:*",
         "@bestiary-ui/style": "workspace:*",
         "@bestiary-ui/utils": "workspace:*",
+        "@bestiary-ui/icons": "workspace:*",
         "vue": "^3.4.0",
         "vue-router": "^4.6.4"
     },

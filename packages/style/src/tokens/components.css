@@ -1,4 +1,5 @@
 :root {
+    /* BUTTON START */
     --b-button-radius: var(--b-ref-radius-md);
     --b-button-font-weight: var(--b-font-weight-medium);
     --b-button-transition: all var(--b-ref-duration-normal) var(--b-ref-ease-in-out);
@@ -16,4 +17,31 @@
     --b-button-h-sm: var(--b-size-sm);
     --b-button-h-md: var(--b-size-md);
     --b-button-h-lg: var(--b-size-lg);
+    /* BUTTON END */
+
+    /* CART START */
+    /* Base */
+    --b-card-radius: var(--b-ref-radius-lg);
+    --b-card-title-weight: var(--b-font-weight-bold);
+    --b-card-title-color: var(--b-text-main);
+    --b-card-title-size: var(--b-font-size-md);
+    --b-card-font-size: var(--b-font-size-sm);
+
+    /* Size */
+    --b-card-pg-sm: var(--b-ref-space-3); /* 12px */
+    --b-card-pg-md: var(--b-ref-space-5); /* 20px */
+    --b-card-pg-lg: var(--b-ref-space-8); /* 32px */
+
+    --b-card-padding-x: var(--b-ref-space-5);
+    --b-card-padding-y: var(--b-ref-space-5);
+
+    /* Картка: Розмір SM */
+    --b-card-padding-sm-x: var(--b-ref-space-4);
+    --b-card-padding-sm-y: var(--b-ref-space-4);
+    /* CART END */
+}
+
+[data-theme='dark'] {
+    --b-card-bg: var(--b-bg-surface);
+    --b-card-border-color: var(--b-border-color);
 }

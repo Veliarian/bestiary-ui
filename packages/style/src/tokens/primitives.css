@@ -27,6 +27,12 @@
     --b-ref-green-800: #3f5a3c;
     --b-ref-green-900: #2e422c;
 
+    --b-ref-amber-50: #fffbeb; /* Light Card info BG */
+    --b-ref-amber-200: #fde68a; /* Light Card info BR */
+    --b-ref-amber-500: #f59e0b; /* Icon Card info */
+    --b-ref-amber-700: #b45309; /* Dark Card info BR */
+    --b-ref-amber-900: #78350f; /* Dark Card info BG */
+
     /* Warning */
     --b-ref-yellow-50: #fffbeb;
     --b-ref-yellow-500: #f59e0b;

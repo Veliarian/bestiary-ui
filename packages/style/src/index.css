@@ -16,5 +16,6 @@
 @import "./utilities/flex.css";
 @import "./utilities/grid.css";
 @import "./utilities/text.css";
+@import "./utilities/backgrounds.css";
 @import "./utilities/display.css";
 @import "./utilities/borders.css";

@@ -89,6 +89,9 @@ importers:
       '@bestiary-ui/components':
         specifier: workspace:*
         version: link:../packages/components
+      '@bestiary-ui/icons':
+        specifier: workspace:*
+        version: link:../packages/icons
       '@bestiary-ui/style':
         specifier: workspace:*
         version: link:../packages/style

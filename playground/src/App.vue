@@ -101,11 +101,6 @@ body {
     margin-bottom: 3rem;
 }
 
-.section h3 {
-    margin-bottom: 1.5rem;
-    color: var(--b-text-muted);
-}
-
 .row {
     display: flex;
     gap: 1.5rem;

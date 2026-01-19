@@ -18,6 +18,7 @@
 .b-text-muted { color: var(--b-text-muted) !important; }
 .b-text-error { color: var(--b-color-error, #ef4444) !important; }
 .b-text-white { color: var(--b-ref-neutral-0) !important; }
+.b-text-success {color: var(--b-color-success) !important;}
 
 .b-uppercase { text-transform: uppercase !important; }
 .b-lowercase { text-transform: lowercase !important; }

@@ -1,0 +1,15 @@
+.b-bg-primary {
+    background-color: var(--b-color-primary) !important;
+}
+
+.b-bg-success-muted {
+    background-color: var(--b-bg-success-muted) !important;
+}
+
+.b-bg-surface {
+    background-color: var(--b-bg-surface) !important;
+}
+
+.b-bg-base {
+    background-color: var(--b-bg-base) !important;
+}

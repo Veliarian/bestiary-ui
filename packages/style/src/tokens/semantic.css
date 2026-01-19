@@ -13,12 +13,16 @@
     --b-text-muted: var(--b-ref-neutral-500);
     --b-text-on-primary: var(--b-ref-neutral-0);
 
+    --b-color-ember: var(--b-ref-amber-50);
+    --b-border-ember: var(--b-ref-amber-200);
+
     --b-border-color: var(--b-ref-neutral-200);
     --b-border-color-focus: var(--b-color-primary);
 
     --b-color-error: var(--b-ref-red-500);
     --b-color-warning: var(--b-ref-yellow-500);
     --b-color-success: var(--b-ref-green-500);
+    --b-bg-success-muted: var(--b-ref-green-50);
 
     --b-shadow: var(--b-ref-shadow-sm);
 
@@ -38,6 +42,12 @@
     --b-text-muted: var(--b-ref-neutral-400);
 
     --b-border-color: var(--b-ref-neutral-700);
+
+    --b-color-ember: var(--b-ref-amber-900);
+    --b-border-ember: var(--b-ref-amber-700);
+
+    --b-color-success: var(--b-ref-green-400);
+    --b-bg-success-muted: rgba(125, 174, 120, 0.15);
 
     --b-text-on-primary: var(--b-ref-neutral-1000);
 }
