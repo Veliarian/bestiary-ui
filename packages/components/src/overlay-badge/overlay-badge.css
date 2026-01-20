@@ -1,0 +1,20 @@
+.b-overlay-badge {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.b-overlay-badge__badge {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    outline: 2px solid var(--b-bg-surface);
+    z-index: var(--b-ref-z-base, 1);
+}
+
+.b-overlay-badge__badge:empty {
+    min-width: 8px;
+    height: 8px;
+    padding: 0;
+}
