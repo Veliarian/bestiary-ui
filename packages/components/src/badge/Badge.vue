@@ -1,7 +1,7 @@
 <template>
-    <span class="b-badge" :class="classes">
+    <span :class="classes">
         <slot>
-            {{value}}}
+            {{value}}
         </slot>
     </span>
 </template>
@@ -12,11 +12,14 @@ import {badgeProps} from "./badge.types";
 import "./badge.css"
 
 defineOptions({name: 'BBadge'});
-defineProps(badgeProps);
+const props = defineProps(badgeProps);
 
 const classes = computed(() => {
     return [
         'b-badge',
-    ]
+        props.form ? `b-badge--form-${props.form}` : "",
+        props.size ? `b-badge--size-${props.size}` : "",
+        props.type ? `b-badge--type-${props.type}` : "",
+    ];
 });
 </script>

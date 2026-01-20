@@ -1,19 +1,24 @@
 import {definePropType} from "@bestiary-ui/utils";
 
-export type Severity = "secondary" | "info" | "success" | "warn" | "danger" | "contrast";
-export type Size = "sm" | "md" | "lg";
+export type BadgeType = "secondary" | "info" | "success" | "warn" | "danger" | "contrast";
+export type BadgeSize = "small" | "large" | "xlarge";
+export type BadgeForm = "circle";
 
 export const badgeProps = {
     value: {
         type: String || Number,
         default: null
     },
-    severity: {
-        type: definePropType<Severity>(String),
+    type: {
+        type: definePropType<BadgeType>(String),
         default: null
     },
     size: {
-        type: definePropType<Size>(String),
+        type: definePropType<BadgeSize>(String),
+        default: null
+    },
+    form: {
+        type: definePropType<BadgeForm>(String),
         default: null
     }
 } as const

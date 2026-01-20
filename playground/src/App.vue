@@ -7,6 +7,7 @@
                 <div class="nav-group">Components</div>
                 <router-link to="/buttons" class="nav-item">Buttons</router-link>
                 <router-link to="/cards" class="nav-item">Cards</router-link>
+                <router-link to="/badges" class="nav-item">Badges</router-link>
                 <div class="nav-group">Icons</div>
                 <router-link to="/icons" class="nav-item">Icons</router-link>
             </nav>

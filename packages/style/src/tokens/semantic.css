@@ -23,6 +23,8 @@
     --b-color-warning: var(--b-ref-yellow-500);
     --b-color-success: var(--b-ref-green-500);
     --b-bg-success-muted: var(--b-ref-green-50);
+    --b-color-info: var(--b-ref-amber-200);
+    --b-bg-color-info: var(--b-ref-amber-50);
 
     --b-shadow: var(--b-ref-shadow-sm);
 
@@ -32,7 +34,6 @@
 }
 
 [data-theme='dark'] {
-    --b-color-primary: var(--b-ref-green-500);
     --b-color-primary-hover: var(--b-ref-green-400);
 
     --b-bg-base: var(--b-ref-neutral-920);

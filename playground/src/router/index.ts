@@ -20,6 +20,11 @@ const router = createRouter({
             component: () => import('../views/CardView.vue')
         },
         {
+          path: "/badges",
+          name: "badges",
+          component: () => import('../views/BadgeView.vue')
+        },
+        {
             path: '/icons',
             name: 'icons',
             component: () => import('../views/IconView.vue')
