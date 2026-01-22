@@ -57,14 +57,6 @@
     --b-shadow: var(--b-ref-shadow-sm);
     --b-shadow-card: var(--b-ref-shadow-md);
     --b-shadow-hover: var(--b-ref-shadow-lg);
-
-    /* ==========================================
-       SIZING
-       ========================================== */
-    --b-size-xs: var(--b-ref-control-h-xs);
-    --b-size-sm: var(--b-ref-control-h-sm);
-    --b-size-md: var(--b-ref-control-h-md);
-    --b-size-lg: var(--b-ref-control-h-lg);
 }
 
 /* ==========================================

@@ -1,3 +1,6 @@
+/* ==========================================
+   DISPLAY
+   ========================================== */
 .b-block { display: block !important; }
 .b-inline { display: inline !important; }
 .b-inline-block { display: inline-block !important; }
@@ -5,8 +8,3 @@
 
 .b-overflow-hidden { overflow: hidden !important; }
 .b-overflow-auto { overflow: auto !important; }
-
-.b-w-full { width: 100% !important; }
-.b-h-full { height: 100% !important; }
-.b-w-screen { width: 100vw !important; }
-.b-h-screen { height: 100vh !important; }
