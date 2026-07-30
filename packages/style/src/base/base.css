@@ -1,0 +1,666 @@
+/**
+ * Bestiary UI — Base Tag Styles
+ * -------------------------------------------
+ * Binds native HTML elements to the contract tokens under zero specificity.
+ * All selectors are wrapped in :where() to ensure exactly 0 specificity.
+ */
+
+/* ============================================================
+   GROUP 1: ROOT & VIEWPORT
+   ============================================================ */
+
+:where(html) {
+    color-scheme: light dark;
+    scrollbar-color: var(--b-scrollbar-thumb) var(--b-scrollbar-track);
+}
+
+:where(body) {
+    background-color: var(--b-bg-ground);
+    color: var(--b-on-ground);
+    font-family: var(--b-font-family-base);
+    font-size: var(--b-body-size);
+    font-weight: var(--b-body-weight);
+    line-height: var(--b-body-leading);
+}
+
+/* Dynamic theme-aware selection highlight using contrast mix */
+:where(::selection) {
+    background-color: color-mix(in oklch, var(--b-primary-solid) 25%, transparent);
+    color: inherit;
+}
+
+/* ============================================================
+   GROUP 3: TEXT BLOCKS & LAYOUT
+   ============================================================ */
+
+/* --- 3.1 Headings --- */
+
+:where(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--b-font-family-display);
+    color: inherit;
+}
+
+:where(h1, h2, h3) {
+    margin-block-end: var(--b-space-4);
+}
+
+:where(h4, h5, h6) {
+    margin-block-end: var(--b-space-2);
+}
+
+:where(h1) {
+    font-size: var(--b-h1-size);
+    font-weight: var(--b-h1-weight);
+    line-height: var(--b-h1-leading);
+}
+
+:where(h2) {
+    font-size: var(--b-h2-size);
+    font-weight: var(--b-h2-weight);
+    line-height: var(--b-h2-leading);
+}
+
+:where(h3) {
+    font-size: var(--b-h3-size);
+    font-weight: var(--b-h3-weight);
+    line-height: var(--b-h3-leading);
+}
+
+:where(h4) {
+    font-size: var(--b-h4-size);
+    font-weight: var(--b-h4-weight);
+    line-height: var(--b-h4-leading);
+}
+
+:where(h5) {
+    font-size: var(--b-h5-size);
+    font-weight: var(--b-h5-weight);
+    line-height: var(--b-h5-leading);
+}
+
+:where(h6) {
+    font-size: var(--b-h6-size);
+    font-weight: var(--b-h6-weight);
+    line-height: var(--b-h6-leading);
+}
+
+/* --- 3.2 Paragraphs --- */
+
+:where(p) {
+    margin-block-end: var(--b-paragraph-spacing);
+}
+
+/* --- 3.3 Lists (Unclassed only) --- */
+
+:where(ul:not([class]), ol:not([class])) {
+    padding-inline-start: var(--b-space-6);
+    margin-block-end: var(--b-paragraph-spacing);
+}
+
+:where(ul:not([class])) {
+    list-style-type: disc;
+}
+
+:where(ol:not([class])) {
+    list-style-type: decimal;
+}
+
+:where(li) {
+    margin-block-end: var(--b-space-1);
+}
+
+/* --- 3.4 Separators --- */
+
+:where(hr) {
+    border: 0;
+    border-block-start: var(--b-stroke-default) solid var(--b-border-subtle);
+    margin-block: var(--b-space-6);
+}
+
+/* --- 3.5 Blockquotes --- */
+
+:where(blockquote) {
+    padding-inline-start: var(--b-space-4);
+    border-inline-start: var(--b-stroke-strong) solid var(--b-primary-solid);
+    margin-block-end: var(--b-paragraph-spacing);
+    font-style: italic;
+    color: color-mix(in oklch, currentColor 85%, transparent);
+}
+
+/* --- 3.6 Code Blocks --- */
+
+:where(pre) {
+    font-family: var(--b-font-family-mono);
+    font-size: var(--b-code-size);
+    line-height: var(--b-code-leading);
+    background-color: var(--b-bg-surface);
+    color: var(--b-on-surface);
+    padding: var(--b-space-4);
+    border-radius: var(--b-radius-container);
+    border: var(--b-stroke-default) solid var(--b-border-subtle);
+    overflow-x: auto;
+    margin-block-end: var(--b-paragraph-spacing);
+}
+
+/* --- 3.7 Definition Lists --- */
+
+:where(dl) {
+    margin-block-end: var(--b-paragraph-spacing);
+}
+
+:where(dt) {
+    font-weight: var(--b-label-weight);
+    color: inherit;
+    margin-block-start: var(--b-space-2);
+}
+
+:where(dd) {
+    margin-inline-start: var(--b-space-4);
+    color: color-mix(in oklch, currentColor 80%, transparent);
+}
+
+/* --- 3.8 Figures & Captions --- */
+
+:where(figure) {
+    margin-block-end: var(--b-paragraph-spacing);
+}
+
+:where(figcaption) {
+    font-size: var(--b-caption-size);
+    line-height: var(--b-caption-leading);
+    margin-block-start: var(--b-space-2);
+    text-align: center;
+    color: color-mix(in oklch, currentColor 60%, transparent);
+}
+
+/* ============================================================
+   GROUP 4: INLINE TEXT FORMATTING
+   ============================================================ */
+
+/* --- 4.1 Hyperlinks (Unclassed only) --- */
+
+:where(a:not([class])) {
+    color: var(--b-primary-on-outline);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: color var(--b-duration-fast) var(--b-ease-base),
+    text-decoration-color var(--b-duration-fast) var(--b-ease-base);
+}
+
+:where(a:not([class]):hover) {
+    color: color-mix(in oklch, var(--b-primary-on-outline) 80%, var(--b-bg-contrast));
+    text-decoration-color: currentColor;
+}
+
+/* --- 4.2 Small Text --- */
+
+:where(small) {
+    font-size: var(--b-caption-size);
+    line-height: var(--b-caption-leading);
+}
+
+/* --- 4.3 Inline Code --- */
+
+:where(code) {
+    font-family: var(--b-font-family-mono);
+    font-size: var(--b-code-size);
+    background-color: var(--b-bg-surface);
+    color: var(--b-primary-on-subtle);
+    border: var(--b-stroke-default) solid var(--b-border-subtle);
+    border-radius: var(--b-radius-interactive);
+    padding: 0.15em 0.3em;
+    font-weight: 500;
+}
+
+/* --- 4.4 Keyboard Inputs --- */
+
+:where(kbd) {
+    font-family: var(--b-font-family-mono);
+    font-size: 0.825em;
+    background-color: var(--b-bg-surface);
+    color: var(--b-on-surface);
+    border: var(--b-stroke-default) solid var(--b-border-default);
+    border-bottom-width: var(--b-stroke-strong);
+    border-radius: var(--b-radius-interactive);
+    padding: 0.15em 0.35em;
+    box-shadow: 0 1px 0 oklch(var(--b-shadow-color-channels) / 5%);
+    transition: background-color var(--b-duration-normal) var(--b-ease-base),
+    border-color var(--b-duration-normal) var(--b-ease-base);
+}
+
+/* --- 4.5 Highlighted Text --- */
+
+:where(mark) {
+    background-color: var(--b-warn-subtle);
+    color: var(--b-warn-on-subtle);
+    padding-inline: 0.15em;
+    border-radius: 0.15em;
+}
+
+/* --- 4.6 Abbreviations --- */
+
+:where(abbr[title]) {
+    text-decoration: underline dotted;
+    text-underline-offset: 3px;
+    cursor: help;
+}
+
+/* --- 4.7 Samples, Definitions & Variables --- */
+
+:where(samp) {
+    font-family: var(--b-font-family-mono);
+    font-size: var(--b-code-size);
+}
+
+:where(dfn) {
+    font-style: italic;
+    font-weight: 500;
+}
+
+:where(var) {
+    font-family: var(--b-font-family-mono);
+    font-style: italic;
+    color: var(--b-primary-on-outline);
+}
+
+/* --- 4.8 Underlines --- */
+
+:where(u) {
+    text-decoration-skip-ink: auto;
+}
+
+/* ============================================================
+   GROUP 5: FORMS & INPUTS
+   ============================================================ */
+
+/* --- 5.1 Fieldsets & Labels --- */
+
+:where(legend) {
+    font-size: var(--b-label-size);
+    font-weight: var(--b-label-weight);
+    line-height: var(--b-label-leading);
+    color: var(--b-on-section);
+    padding-inline: var(--b-space-2);
+}
+
+:where(fieldset) {
+    border: var(--b-stroke-default) solid var(--b-border-subtle);
+    border-radius: var(--b-radius-container);
+    padding: var(--b-space-4) var(--b-space-5);
+    margin-block-end: var(--b-paragraph-spacing);
+}
+
+:where(label) {
+    font-size: var(--b-label-size);
+    font-weight: var(--b-label-weight);
+    line-height: var(--b-label-leading);
+    color: var(--b-on-surface);
+    display: inline-block;
+    margin-block-end: var(--b-space-1);
+}
+
+/* --- 5.2 Text inputs & Textareas --- */
+
+:where(input[type="text"], input[type="password"], input[type="email"], input[type="tel"], input[type="number"], input[type="search"], input[type="url"]) {
+    height: var(--b-control-size-md);
+    padding-inline: var(--b-space-3);
+}
+
+:where(textarea) {
+    height: auto;
+    min-block-size: calc(var(--b-control-size-md) * 2);
+    padding: var(--b-space-2) var(--b-space-3);
+}
+
+:where(input[type="text"], input[type="password"], input[type="email"], input[type="tel"], input[type="number"], input[type="search"], input[type="url"], textarea) {
+    background-color: var(--b-bg-surface);
+    color: var(--b-on-surface);
+    border: var(--b-stroke-default) solid var(--b-border-default);
+    border-radius: var(--b-radius-interactive);
+    transition: all var(--b-duration-normal) var(--b-ease-base);
+}
+
+:where(input[type="text"]:not(:disabled):hover, input[type="password"]:not(:disabled):hover, input[type="email"]:not(:disabled):hover, input[type="tel"]:not(:disabled):hover, input[type="number"]:not(:disabled):hover, input[type="search"]:not(:disabled):hover, input[type="url"]:not(:disabled):hover, textarea:not(:disabled):hover) {
+    border-color: color-mix(in oklch, var(--b-border-default) 75%, var(--b-bg-contrast));
+}
+
+:where(input[type="text"]:focus-visible, input[type="password"]:focus-visible, input[type="email"]:focus-visible, input[type="tel"]:focus-visible, input[type="number"]:focus-visible, input[type="search"]:focus-visible, input[type="url"]:focus-visible, textarea:focus-visible) {
+    border-color: var(--b-focus-ring);
+    outline: var(--b-stroke-focus) solid var(--b-focus-ring);
+    outline-offset: var(--b-focus-ring-offset);
+}
+
+:where(input::placeholder, textarea::placeholder) {
+    color: color-mix(in oklch, var(--b-on-surface) 50%, transparent);
+}
+
+/* --- 5.3 Select Boxes --- */
+
+/* Custom select dropdown styling with an inline SVG chevron */
+:where(select) {
+    height: var(--b-control-size-md);
+    padding-inline-start: var(--b-space-3);
+    padding-inline-end: var(--b-space-8);
+    background-color: var(--b-bg-surface);
+    color: var(--b-on-surface);
+    border: var(--b-stroke-default) solid var(--b-border-default);
+    border-radius: var(--b-radius-interactive);
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2378716c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--b-space-3) center;
+    background-size: 1.25em;
+    transition: all var(--b-duration-normal) var(--b-ease-base);
+}
+
+:where(select:not(:disabled):hover) {
+    border-color: color-mix(in oklch, var(--b-border-default) 75%, var(--b-bg-contrast));
+}
+
+:where(select:focus-visible) {
+    border-color: var(--b-focus-ring);
+    outline: var(--b-stroke-focus) solid var(--b-focus-ring);
+    outline-offset: var(--b-focus-ring-offset);
+}
+
+:where(option, optgroup) {
+    background-color: var(--b-bg-section);
+    color: var(--b-on-section);
+}
+
+/* --- 5.4 Checkboxes & Radios (Pure CSS Vector Markers) --- */
+
+:where(input[type="checkbox"], input[type="radio"]) {
+    height: var(--b-icon-size-md);
+    width: var(--b-icon-size-md);
+    background-color: var(--b-bg-surface);
+    border: var(--b-stroke-default) solid var(--b-border-default);
+    cursor: pointer;
+    display: inline-grid;
+    place-content: center;
+    transition: all var(--b-duration-fast) var(--b-ease-base);
+}
+
+:where(input[type="checkbox"]) {
+    border-radius: calc(var(--b-radius-interactive) / 1.5);
+}
+
+:where(input[type="radio"]) {
+    border-radius: var(--b-radius-full);
+}
+
+:where(input[type="checkbox"]:not(:disabled):hover, input[type="radio"]:not(:disabled):hover) {
+    border-color: color-mix(in oklch, var(--b-border-default) 75%, var(--b-bg-contrast));
+}
+
+:where(input[type="checkbox"]:focus-visible, input[type="radio"]:focus-visible) {
+    border-color: var(--b-focus-ring);
+    outline: var(--b-stroke-focus) solid var(--b-focus-ring);
+    outline-offset: var(--b-focus-ring-offset);
+}
+
+:where(input[type="checkbox"]:checked, input[type="radio"]:checked) {
+    background-color: var(--b-primary-solid);
+    border-color: var(--b-primary-solid);
+}
+
+/* Generates custom checkmark vector using CSS clip-path mask */
+:where(input[type="checkbox"]::before) {
+    content: "";
+    width: 0.625em;
+    height: 0.625em;
+    transform: scale(0);
+    background-color: var(--b-primary-on-solid);
+    clip-path: polygon(14% 44%, 0 62%, 33% 90%, 100% 16%, 80% 0%, 33% 56%);
+    transition: transform var(--b-duration-fast) var(--b-ease-accent);
+}
+
+/* Generates custom radio central dot */
+:where(input[type="radio"]::before) {
+    content: "";
+    width: 0.45em;
+    height: 0.45em;
+    border-radius: var(--b-radius-full);
+    transform: scale(0);
+    background-color: var(--b-primary-on-solid);
+    transition: transform var(--b-duration-fast) var(--b-ease-accent);
+}
+
+:where(input[type="checkbox"]:checked::before, input[type="radio"]:checked::before) {
+    transform: scale(1);
+}
+
+/* --- 5.5 Unclassed Buttons --- */
+
+:where(button:not([class]), input[type="submit"]:not([class]), input[type="button"]:not([class])) {
+    height: var(--b-control-size-md);
+    padding-inline: var(--b-space-4);
+    background-color: var(--b-primary-solid);
+    color: var(--b-primary-on-solid);
+    border-radius: var(--b-radius-interactive);
+    font-weight: var(--b-label-weight);
+    font-size: var(--b-label-size);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--b-space-2);
+    transition: all var(--b-duration-normal) var(--b-ease-base);
+}
+
+:where(button:not([class]):not(:disabled):hover, input[type="submit"]:not([class]):not(:disabled):hover, input[type="button"]:not([class]):not(:disabled):hover) {
+    background-color: color-mix(in oklch, var(--b-primary-solid) 92%, var(--b-bg-contrast));
+}
+
+:where(button:not([class]):not(:disabled):active, input[type="submit"]:not([class]):not(:disabled):active, input[type="button"]:not([class]):not(:disabled):active) {
+    transform: scale(var(--b-state-active-scale));
+    filter: brightness(var(--b-state-active-brightness));
+}
+
+:where(button:not([class]):focus-visible, input[type="submit"]:not([class]):focus-visible, input[type="button"]:not([class]):focus-visible) {
+    outline: var(--b-stroke-focus) solid var(--b-focus-ring);
+    outline-offset: var(--b-focus-ring-offset);
+}
+
+:where(button:disabled, input[type="submit"]:disabled, input[type="button"]:disabled) {
+    opacity: var(--b-state-disabled-opacity);
+}
+
+/* --- 5.6 Progress Bars --- */
+
+:where(progress) {
+    display: block;
+    width: 100%;
+    height: var(--b-space-2);
+    border-radius: var(--b-radius-full);
+    background-color: var(--b-bg-surface);
+    overflow: hidden;
+}
+
+:where(progress::-webkit-progress-bar) {
+    background-color: var(--b-bg-surface);
+}
+
+:where(progress::-webkit-progress-value) {
+    background-color: var(--b-primary-solid);
+    transition: width var(--b-duration-normal) var(--b-ease-base);
+}
+
+:where(progress::-moz-progress-bar) {
+    background-color: var(--b-primary-solid);
+}
+
+/* ============================================================
+   GROUP 6: TABLES
+   ============================================================ */
+
+/* --- 6.1 Containers & Captions --- */
+
+:where(table) {
+    width: 100%;
+    margin-block-end: var(--b-paragraph-spacing);
+}
+
+:where(caption) {
+    font-size: var(--b-caption-size);
+    line-height: var(--b-caption-leading);
+    color: color-mix(in oklch, currentColor 60%, transparent);
+    padding-block: var(--b-space-2);
+    text-align: center;
+}
+
+/* --- 6.2 Cells & Headers --- */
+
+:where(th) {
+    font-weight: var(--b-label-weight);
+    font-size: var(--b-label-size);
+    line-height: var(--b-label-leading);
+    color: inherit;
+    padding: var(--b-space-3) var(--b-space-4);
+    border-block-end: var(--b-stroke-strong) solid var(--b-border-default);
+}
+
+:where(td) {
+    font-size: var(--b-body-size);
+    line-height: var(--b-body-leading);
+    padding: var(--b-space-3) var(--b-space-4);
+    border-block-end: var(--b-stroke-default) solid var(--b-border-subtle);
+}
+
+/* --- 6.3 Rows, Hover & Striping --- */
+
+:where(tbody tr) {
+    transition: background-color var(--b-duration-fast) var(--b-ease-base);
+}
+
+/* Standardized context-aware zebra striping via dynamic oklch mixing */
+:where(tbody tr:nth-child(even)) {
+    background-color: color-mix(in oklch, currentColor 3%, transparent);
+}
+
+:where(tbody tr:hover) {
+    background-color: color-mix(in oklch, currentColor 5%, transparent);
+}
+
+/* ============================================================
+   GROUP 7: EMBEDDED & MEDIA
+   ============================================================ */
+
+/* --- 7.1 Images --- */
+
+:where(img) {
+    font-family: var(--b-font-family-base);
+    font-size: var(--b-caption-size);
+    color: color-mix(in oklch, currentColor 60%, transparent);
+    transition: filter var(--b-duration-normal) var(--b-ease-base);
+}
+
+/* --- 7.2 Vector Graphics (SVG) --- */
+
+:where(svg) {
+    vertical-align: middle;
+    transition: fill var(--b-duration-fast) var(--b-ease-base),
+    stroke var(--b-duration-fast) var(--b-ease-base);
+}
+
+/* --- 7.3 Media Players --- */
+
+:where(audio) {
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
+}
+
+:where(video) {
+    background-color: var(--b-bg-contrast);
+}
+
+/* --- 7.4 Iframes --- */
+
+/* Prevents white loading flashes in dark mode by applying section background */
+:where(iframe) {
+    background-color: var(--b-bg-section);
+    border-radius: var(--b-radius-container);
+}
+
+/* ============================================================
+   GROUP 8: INTERACTIVE
+   ============================================================ */
+
+/* --- 8.1 Accordions (Details & Summary) --- */
+
+:where(details) {
+    border-radius: var(--b-radius-container);
+    border: var(--b-stroke-default) solid var(--b-border-subtle);
+    background-color: var(--b-bg-section);
+    margin-block-end: var(--b-paragraph-spacing);
+    overflow: hidden;
+    transition: all var(--b-duration-normal) var(--b-ease-base);
+}
+
+:where(summary) {
+    padding: var(--b-space-3) var(--b-space-4);
+    font-weight: var(--b-label-weight);
+    font-size: var(--b-label-size);
+    line-height: var(--b-label-leading);
+    color: var(--b-on-section);
+    background-color: var(--b-bg-section);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--b-space-2);
+    cursor: pointer;
+    transition: background-color var(--b-duration-normal) var(--b-ease-base);
+}
+
+:where(summary:hover) {
+    background-color: var(--b-bg-surface);
+}
+
+:where(summary:focus-visible) {
+    outline: var(--b-stroke-focus) solid var(--b-focus-ring);
+    outline-offset: -2px;
+}
+
+/* Injects custom chevron vector after the summary text */
+:where(summary::after) {
+    content: "";
+    width: 1.25em;
+    height: 1.25em;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2378716c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: transform var(--b-duration-normal) var(--b-ease-base);
+}
+
+/* Spins the arrow icon 180 degrees when details container is active */
+:where(details[open] summary::after) {
+    transform: rotate(180deg);
+}
+
+:where(details > *:not(summary)) {
+    padding: var(--b-space-4);
+    border-block-start: var(--b-stroke-default) solid var(--b-border-subtle);
+    background-color: var(--b-bg-section);
+}
+
+/* --- 8.2 Dialog Modals --- */
+
+:where(dialog) {
+    background-color: var(--b-bg-section);
+    color: var(--b-on-section);
+    border-radius: var(--b-radius-floating);
+    padding: var(--b-space-6);
+    box-shadow: var(--b-shadow-lg);
+    max-width: var(--b-breakpoint-sm);
+    width: calc(100% - var(--b-space-8));
+}
+
+/* Blurred luxury modal backdrop overlay */
+:where(dialog::backdrop) {
+    background-color: color-mix(in oklch, var(--b-bg-contrast) 50%, transparent);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: backdrop-filter var(--b-duration-normal) var(--b-ease-base);
+}

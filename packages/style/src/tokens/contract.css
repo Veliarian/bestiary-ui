@@ -1,287 +1,448 @@
 /**
  * Bestiary UI — Global Semantic Contract
  * -------------------------------------------
- * BLOCK 1: THEME
- * BLOCK 2: ESSENCE
+ * BLOCK 1: THEME (Geometry & Motion)
+ * BLOCK 2: ESSENCE (Colors, Borders & Effects)
  */
 
+/* ============================================================
+   BLOCK 1: THEME
+   ============================================================ */
+
+/* The active theme name identifier (e.g. "forest", "corporate") */
 @property --b-theme-name { syntax: "*"; inherits: true; initial-value: "default"; }
 
-/* 1.1 Font Families */
-@property --b-font-family-base    { syntax: "*"; inherits: true; initial-value: sans-serif; }
-@property --b-font-family-display { syntax: "*"; inherits: true; initial-value: sans-serif; }
-@property --b-font-family-mono    { syntax: "*"; inherits: true; initial-value: monospace; }
+/* --- 1.1 FONT FAMILIES --- */
 
-/* 1.2 Typography Roles (Mapping) */
-/* H1-H6 Sizes, Weights, Leading */
-@property --b-h1-size { syntax: "<length-percentage>"; inherits: true; initial-value: 0px; }
+/* Base font family for general body text, paragraphs, and forms */
+@property --b-font-family-base {
+    syntax: "*";
+    inherits: true;
+    initial-value: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Accent font family for headers, titles, and display typography */
+@property --b-font-family-display {
+    syntax: "*";
+    inherits: true;
+    initial-value: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Monospace font family for code blocks, terminal outputs, and inline code tags */
+@property --b-font-family-mono {
+    syntax: "*";
+    inherits: true;
+    initial-value: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+}
+
+/* --- 1.2 TYPOGRAPHY ROLES --- */
+
+/* Heading 1 size (used for primary page titles) */
+@property --b-h1-size { syntax: "<length-percentage>"; inherits: true; initial-value: 2.25rem; }
+/* Heading 1 font weight */
 @property --b-h1-weight { syntax: "<number>"; inherits: true; initial-value: 700; }
-@property --b-h1-leading { syntax: "<number>"; inherits: true; initial-value: 1; }
+/* Heading 1 line height multiplier */
+@property --b-h1-leading { syntax: "<number>"; inherits: true; initial-value: 1.2; }
 
-@property --b-h2-size { syntax: "<length-percentage>"; inherits: true; initial-value: 0px; }
+/* Heading 2 size (used for major section headers) */
+@property --b-h2-size { syntax: "<length-percentage>"; inherits: true; initial-value: 1.875rem; }
+/* Heading 2 font weight */
 @property --b-h2-weight { syntax: "<number>"; inherits: true; initial-value: 700; }
-@property --b-h2-leading { syntax: "<number>"; inherits: true; initial-value: 1; }
+/* Heading 2 line height multiplier */
+@property --b-h2-leading { syntax: "<number>"; inherits: true; initial-value: 1.2; }
 
-@property --b-h3-size { syntax: "<length-percentage>"; inherits: true; initial-value: 0px; }
-@property --b-h3-weight { syntax: "<number>"; inherits: true; initial-value: 700; }
-@property --b-h3-leading { syntax: "<number>"; inherits: true; initial-value: 1; }
+/* Heading 3 size (used for sub-sections and cards) */
+@property --b-h3-size { syntax: "<length-percentage>"; inherits: true; initial-value: 1.5rem; }
+/* Heading 3 font weight */
+@property --b-h3-weight { syntax: "<number>"; inherits: true; initial-value: 600; }
+/* Heading 3 line height multiplier */
+@property --b-h3-leading { syntax: "<number>"; inherits: true; initial-value: 1.3; }
 
-@property --b-h4-size { syntax: "<length-percentage>"; inherits: true; initial-value: 0px; }
-@property --b-h4-weight { syntax: "<number>"; inherits: true; initial-value: 700; }
-@property --b-h4-leading { syntax: "<number>"; inherits: true; initial-value: 1; }
+/* Heading 4 size (used for secondary titles inside panels) */
+@property --b-h4-size { syntax: "<length-percentage>"; inherits: true; initial-value: 1.25rem; }
+/* Heading 4 font weight */
+@property --b-h4-weight { syntax: "<number>"; inherits: true; initial-value: 600; }
+/* Heading 4 line height multiplier */
+@property --b-h4-leading { syntax: "<number>"; inherits: true; initial-value: 1.35; }
 
-@property --b-h5-size { syntax: "<length-percentage>"; inherits: true; initial-value: 0px; }
-@property --b-h5-weight { syntax: "<number>"; inherits: true; initial-value: 700; }
-@property --b-h5-leading { syntax: "<number>"; inherits: true; initial-value: 1; }
+/* Heading 5 size (used for small nested section headers) */
+@property --b-h5-size { syntax: "<length-percentage>"; inherits: true; initial-value: 1.125rem; }
+/* Heading 5 font weight */
+@property --b-h5-weight { syntax: "<number>"; inherits: true; initial-value: 600; }
+/* Heading 5 line height multiplier */
+@property --b-h5-leading { syntax: "<number>"; inherits: true; initial-value: 1.4; }
 
-@property --b-h6-size { syntax: "<length-percentage>"; inherits: true; initial-value: 0px; }
-@property --b-h6-weight { syntax: "<number>"; inherits: true; initial-value: 700; }
-@property --b-h6-leading { syntax: "<number>"; inherits: true; initial-value: 1; }
+/* Heading 6 size (used for micro headers and labels) */
+@property --b-h6-size { syntax: "<length-percentage>"; inherits: true; initial-value: 1rem; }
+/* Heading 6 font weight */
+@property --b-h6-weight { syntax: "<number>"; inherits: true; initial-value: 600; }
+/* Heading 6 line height multiplier */
+@property --b-h6-leading { syntax: "<number>"; inherits: true; initial-value: 1.4; }
 
-@property --b-body-size { syntax: "<length-percentage>"; inherits: true; initial-value: 16px; }
+/* Body text size (main text scale for general layout) */
+@property --b-body-size { syntax: "<length-percentage>"; inherits: true; initial-value: 1rem; }
+/* Body text font weight */
 @property --b-body-weight { syntax: "<number>"; inherits: true; initial-value: 400; }
+/* Body text line height multiplier */
 @property --b-body-leading { syntax: "<number>"; inherits: true; initial-value: 1.5; }
 
-@property --b-label-size { syntax: "<length-percentage>"; inherits: true; initial-value: 14px; }
+/* Label text size (used for buttons, form labels, badges) */
+@property --b-label-size { syntax: "<length-percentage>"; inherits: true; initial-value: 0.875rem; }
+/* Label text font weight */
 @property --b-label-weight { syntax: "<number>"; inherits: true; initial-value: 500; }
-@property --b-label-leading { syntax: "<number>"; inherits: true; initial-value: 1.2; }
+/* Label text line height multiplier */
+@property --b-label-leading { syntax: "<number>"; inherits: true; initial-value: 1.25; }
 
-@property --b-caption-size { syntax: "<length-percentage>"; inherits: true; initial-value: 16px; }
+/* Caption text size (used for help text, timestamps, metadata) */
+@property --b-caption-size { syntax: "<length-percentage>"; inherits: true; initial-value: 0.75rem; }
+/* Caption text font weight */
 @property --b-caption-weight { syntax: "<number>"; inherits: true; initial-value: 400; }
-@property --b-caption-leading { syntax: "<number>"; inherits: true; initial-value: 1.5; }
+/* Caption text line height multiplier */
+@property --b-caption-leading { syntax: "<number>"; inherits: true; initial-value: 1.4; }
 
-@property --b-code-size { syntax: "<length-percentage>"; inherits: true; initial-value: 14px; }
+/* Code text size (used for code blocks and inline code keywords) */
+@property --b-code-size { syntax: "<length-percentage>"; inherits: true; initial-value: 0.875rem; }
+/* Code text font weight */
 @property --b-code-weight { syntax: "<number>"; inherits: true; initial-value: 400; }
-@property --b-code-leading { syntax: "<number>"; inherits: true; initial-value: 1.2; }
+/* Code text line height multiplier */
+@property --b-code-leading { syntax: "<number>"; inherits: true; initial-value: 1.5; }
 
-@property --b-text-small-size { syntax: "<length-percentage>"; inherits: true; initial-value: 12px; }
-@property --b-text-small-weight { syntax: "<number>"; inherits: true; initial-value: 300; }
-@property --b-text-small-leading { syntax: "<number>"; inherits: true; initial-value: 1; }
+/* Global margin bottom applied to paragraphs and text blocks */
+@property --b-paragraph-spacing { syntax: "<length-percentage>"; inherits: true; initial-value: 1.25rem; }
 
-@property --b-paragraph-spacing { syntax: "<length-percentage>"; inherits: true; initial-value: 1.5rem; }
+/* --- 1.3 CONTROL SIZE --- */
 
-/* 1.3 Control size */
-@property --b-control-size-xs { syntax: "<length-percentage>"; inherits: true; initial-value: 12px; }
-@property --b-control-size-sm { syntax: "<length-percentage>"; inherits: true; initial-value: 16px; }
-@property --b-control-size-md { syntax: "<length-percentage>"; inherits: true; initial-value: 24px; }
-@property --b-control-size-lg { syntax: "<length-percentage>"; inherits: true; initial-value: 32px; }
-@property --b-control-size-xl { syntax: "<length-percentage>"; inherits: true; initial-value: 48px; }
+/* Small interactive element height (buttons, inputs) */
+@property --b-control-size-sm { syntax: "<length-percentage>"; inherits: true; initial-value: 2rem; }
+/* Medium interactive element height (default size for forms/controls) */
+@property --b-control-size-md { syntax: "<length-percentage>"; inherits: true; initial-value: 2.5rem; }
+/* Large interactive element height (used for prominent call-to-actions) */
+@property --b-control-size-lg { syntax: "<length-percentage>"; inherits: true; initial-value: 3rem; }
+/* Extra large interactive element height (used for massive hero elements) */
+@property --b-control-size-xl { syntax: "<length-percentage>"; inherits: true; initial-value: 3.5rem; }
 
-/* 1.4 Icon size */
-@property --b-icon-size-xs { syntax: "<length-percentage>"; inherits: true; initial-value: 12px; }
-@property --b-icon-size-sm { syntax: "<length-percentage>"; inherits: true; initial-value: 16px; }
-@property --b-icon-size-md { syntax: "<length-percentage>"; inherits: true; initial-value: 24px; }
-@property --b-icon-size-lg { syntax: "<length-percentage>"; inherits: true; initial-value: 32px; }
-@property --b-icon-size-xl { syntax: "<length-percentage>"; inherits: true; initial-value: 48px; }
+/* --- 1.4 ICON SIZE --- */
 
-/* 1.5 Stacking Context (Z-Index) */
-@property --b-z-hide     { syntax: "<integer>"; inherits: true; initial-value: -1; }
-@property --b-z-base     { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@property --b-z-nav      { syntax: "<integer>"; inherits: true; initial-value: 100; }
-@property --b-z-dropdown { syntax: "<integer>"; inherits: true; initial-value: 100; }
-@property --b-z-sticky   { syntax: "<integer>"; inherits: true; initial-value: 100; }
-@property --b-z-overlay  { syntax: "<integer>"; inherits: true; initial-value: 1000; }
-@property --b-z-modal    { syntax: "<integer>"; inherits: true; initial-value: 1100; }
-@property --b-z-popover  { syntax: "<integer>"; inherits: true; initial-value: 1100; }
-@property --b-z-toast    { syntax: "<integer>"; inherits: true; initial-value: 1100; }
-@property --b-z-tooltip  { syntax: "<integer>"; inherits: true; initial-value: 1100; }
+/* Small icon size (16px equivalent) */
+@property --b-icon-size-sm { syntax: "<length-percentage>"; inherits: true; initial-value: 1rem; }
+/* Medium icon size (20px equivalent, standard layout) */
+@property --b-icon-size-md { syntax: "<length-percentage>"; inherits: true; initial-value: 1.25rem; }
+/* Large icon size (24px equivalent) */
+@property --b-icon-size-lg { syntax: "<length-percentage>"; inherits: true; initial-value: 1.5rem; }
+/* Extra large icon size (32px equivalent) */
+@property --b-icon-size-xl { syntax: "<length-percentage>"; inherits: true; initial-value: 2rem; }
 
-/* 1.6 Strokes */
-@property --b-stroke-default    { syntax: "<length>"; inherits: true; initial-value: 1px; }
-@property --b-stroke-strong     { syntax: "<length>"; inherits: true; initial-value: 2px; }
-@property --b-stroke-focus      { syntax: "<length>"; inherits: true; initial-value: 2px; }
+/* --- 1.5 RADIUS --- */
+
+/* Border radius for interactive elements (buttons, inputs, select boxes) */
+@property --b-radius-interactive { syntax: "<length-percentage>"; inherits: true; initial-value: 0.375rem; }
+/* Border radius for layout containers (cards, sidebars, alerts) */
+@property --b-radius-container   { syntax: "<length-percentage>"; inherits: true; initial-value: 0.75rem; }
+/* Border radius for floating elements (modals, dropdowns, tooltips) */
+@property --b-radius-floating    { syntax: "<length-percentage>"; inherits: true; initial-value: 1rem; }
+/* Full pill border radius for circular buttons and badges */
+@property --b-radius-full        { syntax: "<length-percentage>"; inherits: true; initial-value: 9999px; }
+
+/* --- 1.6 STROKES --- */
+
+/* Default border stroke thickness (thin separator border) */
+@property --b-stroke-default { syntax: "<length>"; inherits: true; initial-value: 1px; }
+/* Strong border stroke thickness (heavy dividers and outline components) */
+@property --b-stroke-strong  { syntax: "<length>"; inherits: true; initial-value: 2px; }
+/* Focus ring stroke thickness for outline-based keyboard focus */
+@property --b-stroke-focus   { syntax: "<length>"; inherits: true; initial-value: 2px; }
+/* Offset space between focused element and the outer focus ring outline */
 @property --b-focus-ring-offset { syntax: "<length>"; inherits: true; initial-value: 2px; }
 
-/* 1.7 Radius */
-@property --b-radius-interactive { syntax: "<length-percentage>"; inherits: true; initial-value: 0.5rem; }
-@property --b-radius-container   { syntax: "<length-percentage>"; inherits: true; initial-value: 0.75rem; }
-@property --b-radius-floating    { syntax: "<length-percentage>"; inherits: true; initial-value: 1rem; }
+/* --- 1.7 BREAKPOINTS --- */
 
-/* 1.8 Duration */
+/* Mobile landscape / small tablet responsive breakpoint (640px) */
+@property --b-breakpoint-sm { syntax: "<length-percentage>"; inherits: true; initial-value: 40rem; }
+/* Portrait tablet / medium screen responsive breakpoint (768px) */
+@property --b-breakpoint-md { syntax: "<length-percentage>"; inherits: true; initial-value: 48rem; }
+/* Desktop / large monitor responsive breakpoint (1024px) */
+@property --b-breakpoint-lg { syntax: "<length-percentage>"; inherits: true; initial-value: 64rem; }
+/* Widescreen / extra large monitor responsive breakpoint (1280px) */
+@property --b-breakpoint-xl { syntax: "<length-percentage>"; inherits: true; initial-value: 80rem; }
+
+/* --- 1.8 SPACE SCALE --- */
+
+/* Space scale step 1 (4px equivalent) */
+@property --b-space-1  { syntax: "<length-percentage>"; inherits: true; initial-value: 0.25rem; }
+/* Space scale step 2 (8px equivalent) */
+@property --b-space-2  { syntax: "<length-percentage>"; inherits: true; initial-value: 0.5rem; }
+/* Space scale step 3 (12px equivalent) */
+@property --b-space-3  { syntax: "<length-percentage>"; inherits: true; initial-value: 0.75rem; }
+/* Space scale step 4 (16px equivalent, standard layout spacing) */
+@property --b-space-4  { syntax: "<length-percentage>"; inherits: true; initial-value: 1rem; }
+/* Space scale step 5 (20px equivalent) */
+@property --b-space-5  { syntax: "<length-percentage>"; inherits: true; initial-value: 1.25rem; }
+/* Space scale step 6 (24px equivalent) */
+@property --b-space-6  { syntax: "<length-percentage>"; inherits: true; initial-value: 1.5rem; }
+/* Space scale step 7 (28px equivalent) */
+@property --b-space-7  { syntax: "<length-percentage>"; inherits: true; initial-value: 1.75rem; }
+/* Space scale step 8 (32px equivalent) */
+@property --b-space-8  { syntax: "<length-percentage>"; inherits: true; initial-value: 2rem; }
+/* Space scale step 9 (36px equivalent) */
+@property --b-space-9  { syntax: "<length-percentage>"; inherits: true; initial-value: 2.25rem; }
+/* Space scale step 10 (40px equivalent) */
+@property --b-space-10 { syntax: "<length-percentage>"; inherits: true; initial-value: 2.5rem; }
+/* Space scale step 11 (44px equivalent) */
+@property --b-space-11 { syntax: "<length-percentage>"; inherits: true; initial-value: 2.75rem; }
+/* Space scale step 12 (48px equivalent) */
+@property --b-space-12 { syntax: "<length-percentage>"; inherits: true; initial-value: 3rem; }
+
+/* --- 1.9 MOTION --- */
+
+/* Fast transition speed for micro-interactions (checkboxes, links) */
 @property --b-duration-fast   { syntax: "<time>"; inherits: true; initial-value: 100ms; }
+/* Standard transition speed for common components (buttons, dropdowns) */
 @property --b-duration-normal { syntax: "<time>"; inherits: true; initial-value: 200ms; }
+/* Slow transition speed for major canvas transitions (collapses, panels) */
 @property --b-duration-slow   { syntax: "<time>"; inherits: true; initial-value: 300ms; }
 
-/* 1.9 Motion */
-@property --b-ease-base   { syntax: "*"; inherits: true; initial-value: ease; }
-@property --b-ease-in     { syntax: "*"; inherits: true; initial-value: ease-in; }
-@property --b-ease-out    { syntax: "*"; inherits: true; initial-value: ease-out; }
+/* Core bezier easing function for standard, smooth hover states */
+@property --b-ease-base   { syntax: "*"; inherits: true; initial-value: cubic-bezier(0.4, 0, 0.2, 1); }
+/* Decelerated easing curve for elements sliding out of the screen */
+@property --b-ease-out    { syntax: "*"; inherits: true; initial-value: cubic-bezier(0, 0, 0.2, 1); }
+/* Bouncy easing curve used for accented modal openings and tooltip popups */
 @property --b-ease-accent { syntax: "*"; inherits: true; initial-value: cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+/* --- 1.10 STACKING CONTEXT --- */
+
+/* Hidden layer index (used for placing elements beneath the normal flow) */
+@property --b-z-hide     { syntax: "<integer>"; inherits: true; initial-value: -1; }
+/* Normal rendering layer baseline index */
+@property --b-z-base     { syntax: "<integer>"; inherits: true; initial-value: 0; }
+/* Sticky elements and headers layout layer index */
+@property --b-z-nav      { syntax: "<integer>"; inherits: true; initial-value: 100; }
+/* In-page dropdown menus stacking index */
+@property --b-z-dropdown { syntax: "<integer>"; inherits: true; initial-value: 100; }
+/* Sticky sidebars and element stacking index */
+@property --b-z-sticky   { syntax: "<integer>"; inherits: true; initial-value: 100; }
+/* Backdrop overlays beneath modal windows stacking index */
+@property --b-z-overlay  { syntax: "<integer>"; inherits: true; initial-value: 1000; }
+/* Center modals and popup dialog windows stacking index */
+@property --b-z-modal    { syntax: "<integer>"; inherits: true; initial-value: 1100; }
+/* Floating popovers and actions panels stacking index */
+@property --b-z-popover  { syntax: "<integer>"; inherits: true; initial-value: 1100; }
+/* Dynamic toast alerts stacking index */
+@property --b-z-toast    { syntax: "<integer>"; inherits: true; initial-value: 1100; }
+/* Text tooltips stacking index */
+@property --b-z-tooltip  { syntax: "<integer>"; inherits: true; initial-value: 1100; }
+
 
 /* ============================================================
    BLOCK 2: ESSENCE
    ============================================================ */
 
+/* The active essence name identifier (e.g. "leaf", "corporate-dark") */
 @property --b-essence-name { syntax: "*"; inherits: true; initial-value: "base"; }
 
-/* 2.1 Palette Scale (Primary Reference) */
-@property --b-primary-50-channels  { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
-@property --b-primary-100-channels { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
-@property --b-primary-200-channels { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
-@property --b-primary-300-channels { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
-@property --b-primary-400-channels { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
-@property --b-primary-500-channels { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
-@property --b-primary-600-channels { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
-@property --b-primary-700-channels { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
-@property --b-primary-800-channels { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
-@property --b-primary-900-channels { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
-@property --b-primary-950-channels { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
+/* --- 2.1 SURFACES --- */
 
-@property --b-primary-50  { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-primary-100 { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-primary-200 { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-primary-300 { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-primary-400 { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-primary-500 { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-primary-600 { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-primary-700 { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-primary-800 { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-primary-900 { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-primary-950 { syntax: "<color>"; inherits: true; initial-value: transparent; }
+/* Primary body canvas background color */
+@property --b-bg-ground   { syntax: "<color>"; inherits: true; initial-value: oklch(0.975 0.002 85); }
+/* Secondary card, panel, and content block background color */
+@property --b-bg-section  { syntax: "<color>"; inherits: true; initial-value: oklch(1 0 0); }
+/* Small nested layout background (inputs, badges, control tracks) */
+@property --b-bg-surface  { syntax: "<color>"; inherits: true; initial-value: oklch(0.94 0.004 85); }
+/* Inverted canvas background (dark tooltips, headers, contrast panels) */
+@property --b-bg-contrast { syntax: "<color>"; inherits: true; initial-value: oklch(0.18 0.01 85); }
 
-/* 2.2 Global Interaction Overlays */
-@property --b-overlay-hover  { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-overlay-active { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-state-disabled-opacity { syntax: "<number>"; inherits: true; initial-value: 0.5; }
+/* --- 2.2 CONTENT ROLES --- */
 
-/* 2.3 Surfaces */
-@property --b-surface-ground   { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-surface-section  { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-surface-variant  { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-surface-floating { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-surface-overlay  { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-surface-contrast { syntax: "<color>"; inherits: true; initial-value: transparent; }
+/* Primary body text color used on top of the ground background */
+@property --b-on-ground   { syntax: "<color>"; inherits: true; initial-value: oklch(0.25 0.01 85); }
+/* High-contrast header and primary text color used on top of section backgrounds */
+@property --b-on-section  { syntax: "<color>"; inherits: true; initial-value: oklch(0.2 0.01 85); }
+/* Control-level label and text color used on top of surface backgrounds */
+@property --b-on-surface  { syntax: "<color>"; inherits: true; initial-value: oklch(0.35 0.01 85); }
+/* Inverted light text color used on top of contrast backgrounds */
+@property --b-on-contrast { syntax: "<color>"; inherits: true; initial-value: oklch(0.98 0.002 85); }
 
-/* 2.4 Typography & Selection */
-@property --b-text-primary   { syntax: "<color>"; inherits: true; initial-value: currentColor; }
-@property --b-text-secondary { syntax: "<color>"; inherits: true; initial-value: currentColor; }
-@property --b-text-muted     { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-text-contrast  { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-text-selection-background { syntax: "<color>"; inherits: true; initial-value: transparent; }
+/* --- 2.3 SYSTEM BORDERS & RINGS --- */
 
-/* 2.5 Form Controls (Inputs) */
-@property --b-form-control-background    { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-form-control-border        { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-form-control-border-hover  { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-form-control-border-active { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --b-form-control-placeholder   { syntax: "<color>"; inherits: true; initial-value: transparent; }
+/* Baseline border color for default layout dividers, columns, and list items */
+@property --b-border-default { syntax: "<color>"; inherits: true; initial-value: oklch(0.85 0.006 85); }
+/* Micro separator border color for table rows and light cards */
+@property --b-border-subtle  { syntax: "<color>"; inherits: true; initial-value: oklch(0.92 0.004 85); }
+/* Focus ring outline color for interactive element accessibility outlines */
+@property --b-focus-ring     { syntax: "<color>"; inherits: true; initial-value: oklch(0.61 0.15 145); }
 
-/* 2.6 System Borders & Rings */
-@property --b-border-default {syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-border-subtle  {syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-focus-ring     {syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
+/* --- 2.4 STATE CONSTANTS --- */
 
-/* 2.7 Shadow and Blur Engine */
+/* Opacity multiplier applied to disabled interactive components */
+@property --b-state-disabled-opacity     { syntax: "<number>"; inherits: true; initial-value: 0.6; }
+/* Dynamic hover state mixing percentage used in runtime color calculations */
+@property --b-state-hover-mix-percentage { syntax: "<percentage>"; inherits: true; initial-value: 8%; }
+/* Active scale transform compression multiplier applied on button click */
+@property --b-state-active-scale         { syntax: "<number>"; inherits: true; initial-value: 0.98; }
+/* Brightness multiplier applied on component click to darken the background */
+@property --b-state-active-brightness    { syntax: "<number>"; inherits: true; initial-value: 0.95; }
 
-/* 2.8 Scrollbar */
-@property --b-scrollbar-thumb { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-scrollbar-track { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
+/* --- 2.5 NATIVE SCROLLBAR --- */
 
-/* ------------------------------------------------------------
-   2.9 THE SEMANTIC MATRIX (Functional Color Groups)
-   ------------------------------------------------------------ */
+/* Color of the native browser scrollbar thumb drag handle */
+@property --b-scrollbar-thumb { syntax: "<color>"; inherits: true; initial-value: oklch(0.75 0.01 85); }
+/* Color of the native browser scrollbar track background */
+@property --b-scrollbar-track { syntax: "<color>"; inherits: true; initial-value: transparent; }
 
-/* PRIMARY (Brand) */
-@property --b-primary-channels               { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
-@property --b-primary-solid-background       { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-primary-solid-background-hover { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-primary-solid-text             { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
+/* --- 2.6 COMPOSITE SHADOW ENGINE --- */
 
-@property --b-primary-subtle-background      { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-primary-subtle-border          { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-primary-subtle-text            { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
+/* Raw OKLCH channels used as the color base for layered shadow calculations */
+@property --b-shadow-color-channels { syntax: "<number>+"; inherits: true; initial-value: 0.18 0.01 85; }
+/* Default alpha opacity of the shadow layers */
+@property --b-shadow-opacity        { syntax: "<percentage>"; inherits: true; initial-value: 8%; }
 
-@property --b-primary-outline-border         { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-primary-outline-text           { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
+/* Soft micro-shadow formula for buttons and inline interactive badges */
+@property --b-shadow-sm { syntax: "*"; inherits: true; initial-value: 0 1px 2px 0 oklch(var(--b-shadow-color-channels) / var(--b-shadow-opacity)); }
+/* Standard drop shadow formula for cards, panels, and dropdown menus */
+@property --b-shadow-md { syntax: "*"; inherits: true; initial-value: 0 4px 6px -1px oklch(var(--b-shadow-color-channels) / var(--b-shadow-opacity)), 0 2px 4px -2px oklch(var(--b-shadow-color-channels) / var(--b-shadow-opacity)); }
+/* Prominent floating shadow formula for modals, dialogs, and toast messages */
+@property --b-shadow-lg { syntax: "*"; inherits: true; initial-value: 0 10px 15px -3px oklch(var(--b-shadow-color-channels) / var(--b-shadow-opacity)), 0 4px 6px -4px oklch(var(--b-shadow-color-channels) / var(--b-shadow-opacity)); }
 
-@property --b-primary-overlay                { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
 
-/* SECONDARY (Neutral Actions) */
-@property --b-secondary-channels               { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
-@property --b-secondary-solid-background       { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-secondary-solid-background-hover { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-secondary-solid-text             { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
+/* ============================================================
+   2.7 THE SEMANTIC COLOR MATRIX (Functional Color Groups)
+   ============================================================ */
 
-@property --b-secondary-subtle-background      { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-secondary-subtle-border          { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-secondary-subtle-text            { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
+/* === 1. PRIMARY (Brand) === */
+/* OKLCH channels for dynamic primary color mixing and effects */
+@property --b-primary-channels          { syntax: "<number>+"; inherits: true; initial-value: 0.61 0.15 145; }
+/* Solid background color for primary/brand components */
+@property --b-primary-solid             { syntax: "<color>"; inherits: true; initial-value: oklch(0.61 0.15 145); }
+/* Contrast text/icon color used on top of primary solid backgrounds */
+@property --b-primary-on-solid          { syntax: "<color>"; inherits: true; initial-value: oklch(1 0 0); }
+/* Light/subtle primary background color for alerts and soft badges */
+@property --b-primary-subtle            { syntax: "<color>"; inherits: true; initial-value: oklch(0.95 0.02 145); }
+/* Light/subtle primary border outline color */
+@property --b-primary-subtle-border     { syntax: "<color>"; inherits: true; initial-value: oklch(0.88 0.04 145); }
+/* High-readability primary text color used on top of subtle backgrounds */
+@property --b-primary-on-subtle         { syntax: "<color>"; inherits: true; initial-value: oklch(0.4 0.1 145); }
+/* Border outline color for primary outline component variants */
+@property --b-primary-outline-border    { syntax: "<color>"; inherits: true; initial-value: oklch(0.61 0.15 145); }
+/* High-readability primary text/icon color used on outline components */
+@property --b-primary-on-outline        { syntax: "<color>"; inherits: true; initial-value: oklch(0.61 0.15 145); }
+/* Micro-opacity backdrop overlay used for hover/focus on outline and text buttons */
+@property --b-primary-overlay           { syntax: "<color>"; inherits: true; initial-value: oklch(0.61 0.15 145 / 8%); }
 
-@property --b-secondary-outline-border         { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-secondary-outline-text           { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
+/* === 2. SECONDARY (Neutrals) === */
+/* OKLCH channels for dynamic secondary color mixing and effects */
+@property --b-secondary-channels          { syntax: "<number>+"; inherits: true; initial-value: 0.55 0.015 250; }
+/* Solid background color for secondary components */
+@property --b-secondary-solid             { syntax: "<color>"; inherits: true; initial-value: oklch(0.55 0.015 250); }
+/* Contrast text/icon color used on top of secondary solid backgrounds */
+@property --b-secondary-on-solid          { syntax: "<color>"; inherits: true; initial-value: oklch(1 0 0); }
+/* Light/subtle secondary background color for alerts and soft badges */
+@property --b-secondary-subtle            { syntax: "<color>"; inherits: true; initial-value: oklch(0.93 0.005 250); }
+/* Light/subtle secondary border outline color */
+@property --b-secondary-subtle-border     { syntax: "<color>"; inherits: true; initial-value: oklch(0.85 0.01 250); }
+/* High-readability secondary text color used on top of subtle backgrounds */
+@property --b-secondary-on-subtle         { syntax: "<color>"; inherits: true; initial-value: oklch(0.35 0.01 250); }
+/* Border outline color for secondary outline component variants */
+@property --b-secondary-outline-border    { syntax: "<color>"; inherits: true; initial-value: oklch(0.55 0.015 250); }
+/* High-readability secondary text/icon color used on outline components */
+@property --b-secondary-on-outline        { syntax: "<color>"; inherits: true; initial-value: oklch(0.55 0.015 250); }
+/* Micro-opacity backdrop overlay used for hover/focus on outline and text buttons */
+@property --b-secondary-overlay           { syntax: "<color>"; inherits: true; initial-value: oklch(0.55 0.015 250 / 8%); }
 
-@property --b-secondary-overlay                { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
+/* === 3. INFO === */
+/* OKLCH channels for dynamic info color mixing and effects */
+@property --b-info-channels          { syntax: "<number>+"; inherits: true; initial-value: 0.62 0.16 235; }
+/* Solid background color for info/neutral notification components */
+@property --b-info-solid             { syntax: "<color>"; inherits: true; initial-value: oklch(0.62 0.16 235); }
+/* Contrast text/icon color used on top of info solid backgrounds */
+@property --b-info-on-solid          { syntax: "<color>"; inherits: true; initial-value: oklch(1 0 0); }
+/* Light/subtle info background color for alerts and soft badges */
+@property --b-info-subtle            { syntax: "<color>"; inherits: true; initial-value: oklch(0.94 0.02 235); }
+/* Light/subtle info border outline color */
+@property --b-info-subtle-border     { syntax: "<color>"; inherits: true; initial-value: oklch(0.88 0.04 235); }
+/* High-readability info text color used on top of subtle backgrounds */
+@property --b-info-on-subtle         { syntax: "<color>"; inherits: true; initial-value: oklch(0.4 0.1 235); }
+/* Border outline color for info outline component variants */
+@property --b-info-outline-border    { syntax: "<color>"; inherits: true; initial-value: oklch(0.62 0.16 235); }
+/* High-readability info text/icon color used on outline components */
+@property --b-info-on-outline        { syntax: "<color>"; inherits: true; initial-value: oklch(0.62 0.16 235); }
+/* Micro-opacity backdrop overlay used for hover/focus on outline and text buttons */
+@property --b-info-overlay           { syntax: "<color>"; inherits: true; initial-value: oklch(0.62 0.16 235 / 8%); }
 
-/* INFO */
-@property --b-info-channels               { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
-@property --b-info-solid-background       { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-info-solid-background-hover { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-info-solid-text             { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
+/* === 4. SUCCESS === */
+/* OKLCH channels for dynamic success color mixing and effects */
+@property --b-success-channels          { syntax: "<number>+"; inherits: true; initial-value: 0.65 0.18 140; }
+/* Solid background color for positive/success components */
+@property --b-success-solid             { syntax: "<color>"; inherits: true; initial-value: oklch(0.65 0.18 140); }
+/* Contrast text/icon color used on top of success solid backgrounds */
+@property --b-success-on-solid          { syntax: "<color>"; inherits: true; initial-value: oklch(1 0 0); }
+/* Light/subtle success background color for alerts and soft badges */
+@property --b-success-subtle            { syntax: "<color>"; inherits: true; initial-value: oklch(0.95 0.03 140); }
+/* Light/subtle success border outline color */
+@property --b-success-subtle-border     { syntax: "<color>"; inherits: true; initial-value: oklch(0.88 0.05 140); }
+/* High-readability success text color used on top of subtle backgrounds */
+@property --b-success-on-subtle         { syntax: "<color>"; inherits: true; initial-value: oklch(0.42 0.11 140); }
+/* Border outline color for success outline component variants */
+@property --b-success-outline-border    { syntax: "<color>"; inherits: true; initial-value: oklch(0.65 0.18 140); }
+/* High-readability success text/icon color used on outline components */
+@property --b-success-on-outline        { syntax: "<color>"; inherits: true; initial-value: oklch(0.65 0.18 140); }
+/* Micro-opacity backdrop overlay used for hover/focus on outline and text buttons */
+@property --b-success-overlay           { syntax: "<color>"; inherits: true; initial-value: oklch(0.65 0.18 140 / 8%); }
 
-@property --b-info-subtle-background      { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-info-subtle-border          { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-info-subtle-text            { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
+/* === 5. WARN === */
+/* OKLCH channels for dynamic warning color mixing and effects */
+@property --b-warn-channels          { syntax: "<number>+"; inherits: true; initial-value: 0.76 0.16 75; }
+/* Solid background color for warnings and alert components */
+@property --b-warn-solid             { syntax: "<color>"; inherits: true; initial-value: oklch(0.76 0.16 75); }
+/* Contrast text/icon color used on top of warning solid backgrounds */
+@property --b-warn-on-solid          { syntax: "<color>"; inherits: true; initial-value: oklch(0.2 0.02 75); }
+/* Light/subtle warning background color for alerts and soft badges */
+@property --b-warn-subtle            { syntax: "<color>"; inherits: true; initial-value: oklch(0.96 0.03 75); }
+/* Light/subtle warning border outline color */
+@property --b-warn-subtle-border     { syntax: "<color>"; inherits: true; initial-value: oklch(0.9 0.05 75); }
+/* High-readability warning text color used on top of subtle backgrounds */
+@property --b-warn-on-subtle         { syntax: "<color>"; inherits: true; initial-value: oklch(0.45 0.1 75); }
+/* Border outline color for warning outline component variants */
+@property --b-warn-outline-border    { syntax: "<color>"; inherits: true; initial-value: oklch(0.76 0.16 75); }
+/* High-readability warning text/icon color used on outline components */
+@property --b-warn-on-outline        { syntax: "<color>"; inherits: true; initial-value: oklch(0.6 0.13 75); }
+/* Micro-opacity backdrop overlay used for hover/focus on outline and text buttons */
+@property --b-warn-overlay           { syntax: "<color>"; inherits: true; initial-value: oklch(0.76 0.16 75 / 8%); }
 
-@property --b-info-outline-border         { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-info-outline-text           { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
+/* === 6. ERROR === */
+/* OKLCH channels for dynamic error color mixing and effects */
+@property --b-error-channels          { syntax: "<number>+"; inherits: true; initial-value: 0.58 0.22 25; }
+/* Solid background color for errors and critical alert components */
+@property --b-error-solid             { syntax: "<color>"; inherits: true; initial-value: oklch(0.58 0.22 25); }
+/* Contrast text/icon color used on top of error solid backgrounds */
+@property --b-error-on-solid          { syntax: "<color>"; inherits: true; initial-value: oklch(1 0 0); }
+/* Light/subtle error background color for alerts and soft badges */
+@property --b-error-subtle            { syntax: "<color>"; inherits: true; initial-value: oklch(0.94 0.03 25); }
+/* Light/subtle error border outline color */
+@property --b-error-subtle-border     { syntax: "<color>"; inherits: true; initial-value: oklch(0.87 0.06 25); }
+/* High-readability error text color used on top of subtle backgrounds */
+@property --b-error-on-subtle         { syntax: "<color>"; inherits: true; initial-value: oklch(0.42 0.12 25); }
+/* Border outline color for error outline component variants */
+@property --b-error-outline-border    { syntax: "<color>"; inherits: true; initial-value: oklch(0.58 0.22 25); }
+/* High-readability error text/icon color used on outline components */
+@property --b-error-on-outline        { syntax: "<color>"; inherits: true; initial-value: oklch(0.58 0.22 25); }
+/* Micro-opacity backdrop overlay used for hover/focus on outline and text buttons */
+@property --b-error-overlay           { syntax: "<color>"; inherits: true; initial-value: oklch(0.58 0.22 25 / 8%); }
 
-@property --b-info-overlay                { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-
-/* SUCCESS */
-@property --b-success-channels               { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
-@property --b-success-solid-background       { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-success-solid-background-hover { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-success-solid-text             { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-
-@property --b-success-subtle-background      { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-success-subtle-border          { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-success-subtle-text            { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-
-@property --b-success-outline-border         { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-success-outline-text           { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-
-@property --b-success-overlay                { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-
-/* WARNING */
-@property --b-warning-channels               { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
-@property --b-warning-solid-background       { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-warning-solid-background-hover { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-warning-solid-text             { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-
-@property --b-warning-subtle-background      { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-warning-subtle-border          { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-warning-subtle-text            { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-
-@property --b-warning-outline-border         { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-warning-outline-text           { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-
-@property --b-warning-overlay                { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-
-/* ERROR */
-@property --b-error-channels               { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
-@property --b-error-solid-background       { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-error-solid-background-hover { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-error-solid-text             { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-
-@property --b-error-subtle-background      { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-error-subtle-border          { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-error-subtle-text            { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-
-@property --b-error-outline-border         { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-error-outline-text           { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-
-@property --b-error-overlay                { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-
-/* CONTRAST (Inverse) */
-@property --b-contrast-channels               { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
-@property --b-contrast-solid-background       { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-contrast-solid-background-hover { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-contrast-solid-text             { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-
-@property --b-contrast-subtle-background      { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-contrast-subtle-border          { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-contrast-subtle-text            { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-
-@property --b-contrast-outline-border         { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-@property --b-contrast-outline-text           { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
-
-@property --b-contrast-overlay                { syntax: "<color>"; inherits: true; initial-value: 0 0 0; }
+/* === 7. CONTRAST (Inverse) === */
+/* OKLCH channels for dynamic contrast color mixing and effects */
+@property --b-contrast-channels          { syntax: "<number>+"; inherits: true; initial-value: 0.18 0.01 85; }
+/* Solid background color for high-contrast/inverse layout components */
+@property --b-contrast-solid             { syntax: "<color>"; inherits: true; initial-value: oklch(0.18 0.01 85); }
+/* Contrast text/icon color used on top of contrast solid backgrounds */
+@property --b-contrast-on-solid          { syntax: "<color>"; inherits: true; initial-value: oklch(0.98 0.002 85); }
+/* Light/subtle contrast background color for alerts and soft badges */
+@property --b-contrast-subtle            { syntax: "<color>"; inherits: true; initial-value: oklch(0.88 0.01 85); }
+/* Light/subtle contrast border outline color */
+@property --b-contrast-subtle-border     { syntax: "<color>"; inherits: true; initial-value: oklch(0.75 0.01 85); }
+/* High-readability contrast text color used on top of subtle backgrounds */
+@property --b-contrast-on-subtle         { syntax: "<color>"; inherits: true; initial-value: oklch(0.2 0.01 85); }
+/* Border outline color for contrast outline component variants */
+@property --b-contrast-outline-border    { syntax: "<color>"; inherits: true; initial-value: oklch(0.18 0.01 85); }
+/* High-readability contrast text/icon color used on outline components */
+@property --b-contrast-on-outline        { syntax: "<color>"; inherits: true; initial-value: oklch(0.18 0.01 85); }
+/* Micro-opacity backdrop overlay used for hover/focus on outline and text buttons */
+@property --b-contrast-overlay           { syntax: "<color>"; inherits: true; initial-value: oklch(0.18 0.01 85 / 8%); }

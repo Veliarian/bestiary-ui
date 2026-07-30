@@ -8,7 +8,7 @@
  * 4. b-utilities: Helper classes (mt-4, hidden) that override everything.
  */
 
-@layer b-tokens, b-reset, b-components, b-utilities;
+@layer b-tokens, b-base, b-components, b-utilities;
 
 
 /* ============================================================
@@ -27,7 +27,8 @@
    2. RESET
    Now that all tokens are known, we apply base styles to HTML tags
    ============================================================ */
-@import "./base/reset.css" layer(b-reset);
+@import "./base/reset.css" layer(b-base);
+@import "./base/base.css" layer(b-base);
 
 
 /* ============================================================

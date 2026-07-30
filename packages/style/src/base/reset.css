@@ -1,141 +1,247 @@
-*,
-::after,
-::before,
-::backdrop,
-::file-selector-button {
+/**
+ * Bestiary UI — Ultimate Blank Slate CSS Reset
+ * -------------------------------------------
+ * A comprehensive, zero-specificity reset designed for component-driven systems.
+ * Erases browser inconsistencies, native form styles, and layout papercuts.
+ * All selectors are wrapped in :where() to maintain exactly 0 specificity.
+ */
+
+/* ============================================================
+   1. GLOBAL BOX MODEL & LAYOUT FIXES
+   ============================================================ */
+
+/* Force a highly predictable border-box sizing model across all elements */
+:where(*, *::before, *::after) {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    border: 0 solid var(--b-border-default);
 }
 
-:where(html) {
-    block-size: 100%;
-    -webkit-text-size-adjust: none;
-    text-size-adjust: none;
-    tab-size: 4;
-    color-scheme: light dark;
+/* Erase all browser-default margins and paddings globally (excluding native dialogs to keep auto-centering) */
+:where(*:not(dialog)) {
+    margin: 0;
+    padding: 0;
+}
 
-    background-color: var(--b-surface-ground);
-    color: var(--b-text-primary);
-    font-family: var(--b-font-family-base);
-    line-height: var(--b-body-leading);
-    font-size: var(--b-body-size);
-    font-weight: var(--b-body-weight);
-    -webkit-tap-highlight-color: transparent;
+/* Prevent flex and grid child elements from overflowing their parent containers.
+   Resolves the notoriously hard-to-debug "min-width: auto" overflow behavior. */
+:where(*, *::before, *::after) {
+    min-inline-size: 0;
+}
 
-    @media (prefers-reduced-motion: no-preference) {
+/* Ensure hidden elements are strictly undisplayed, regardless of cascade conditions */
+:where([hidden]) {
+    display: none !important;
+}
+
+/* Ensure native dialogs reset correctly but maintain their standard display block centering */
+:where(dialog) {
+    border: 0;
+}
+
+/* Enable transitions to/from intrinsic sizing keywords (auto, min-content, etc.)
+   and smooth scrolling only for users who have not requested reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+    :where(html) {
+        interpolate-size: allow-keywords;
         scroll-behavior: smooth;
     }
 }
 
+/* ============================================================
+   2. CANVAS, TEXT ACCESSIBILITY & VIEWPORT
+   ============================================================ */
+
+/* Prevent automatic text size inflation on mobile devices during orientation changes */
+:where(html) {
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+/* Force body to span the full dynamic height of the viewport and establish text defaults */
 :where(body) {
-    min-block-size: 100%;
-    line-height: inherit;
+    min-block-size: 100dvh; /* Adapts dynamically when mobile address bars expand/collapse */
+    line-height: 1.5;      /* Sane, highly readable default baseline */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
+/* Prevent heading layout imbalances (no isolated dangling words on a new line) */
 :where(h1, h2, h3, h4, h5, h6) {
-    font-family: var(--b-font-family-display, var(--b-font-family-base));
     text-wrap: balance;
-    color: var(--b-text-primary);
+    overflow-wrap: break-word;
 }
 
-:where(h1) { font-size: var(--b-h1-size); font-weight: var(--b-h1-weight); line-height: var(--b-h1-leading); }
-:where(h2) { font-size: var(--b-h2-size); font-weight: var(--b-h2-weight); line-height: var(--b-h2-leading); }
-:where(h3) { font-size: var(--b-h3-size); font-weight: var(--b-h3-weight); line-height: var(--b-h3-leading); }
-:where(h4) { font-size: var(--b-h4-size); font-weight: var(--b-h4-weight); line-height: var(--b-h4-leading); }
-:where(h5) { font-size: var(--b-h5-size); font-weight: var(--b-h5-weight); line-height: var(--b-h5-leading); }
-:where(h6) { font-size: var(--b-h6-size); font-weight: var(--b-h6-weight); line-height: var(--b-h6-leading); }
-
-:where(p, ul, ol, dl) {
+/* Prevent paragraph orphan layout bugs and wrap long strings/URLs safely */
+:where(p, li, dd, dt) {
     text-wrap: pretty;
+    overflow-wrap: break-word;
 }
 
-:where(p) {
-    margin-block-end: var(--b-paragraph-spacing);
+/* Normalizes the native contact information tag to match modern typography */
+:where(address) {
+    font-style: normal; /* Erases the outdated default browser italic styling */
+    line-height: inherit; /* Explicitly inherits baseline body line-height */
 }
 
-:where(ol, ul, menu) {
-    list-style: none;
-}
+/* ============================================================
+   3. MEDIA & GRAPHICS OVERRIDES
+   ============================================================ */
 
-:where(a) {
-    color: inherit;
-    text-decoration: none;
-    text-underline-offset: 2px;
-}
-
-:where(small) {
-    font-size: var(--b-text-small-size);
-    font-weight: var(--b-text-small-weight);
-    line-height: var(--b-text-small-leading);
-}
-
-:where(code, kbd, samp, pre) {
-    font-family: var(--b-font-family-mono);
-    font-size: var(--b-code-size);
-}
-
-:where(img, svg, video, canvas, audio, iframe, embed, object) {
+/* Erase the inline browser spacing gap beneath images and restrict overflow */
+:where(img, picture, video, canvas, svg) {
     display: block;
-    vertical-align: middle;
     max-inline-size: 100%;
     block-size: auto;
 }
 
-:where(button, input, select, optgroup, textarea, ::file-selector-button) {
+/* Ensure SVGs inherit the current text color by default when no explicit fill is defined */
+:where(svg:not([fill])) {
+    fill: currentColor;
+}
+
+/* Lock iframe elements from rendering native grey 3D bevel borders */
+:where(iframe) {
+    border: 0;
+}
+
+/* ============================================================
+   4. COMPREHENSIVE FORM & CONTROL UNSTYLING
+   ============================================================ */
+
+/* Completely unstyle and nakedize native form controls to make them a blank canvas */
+:where(input, button, textarea, select) {
     font: inherit;
-    font-feature-settings: inherit;
-    font-variation-settings: inherit;
-    letter-spacing: inherit;
     color: inherit;
-    background-color: transparent;
+    background: transparent;
+    border: 0;
     border-radius: 0;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
-:where(a[href], area, button, label[for], select, summary,[tabindex]:not([tabindex*="-"])) {
+/* Native buttons and active inputs should explicitly display a pointer cursor */
+:where(button, [type="button"], [type="reset"], [type="submit"]) {
     cursor: pointer;
-    touch-action: manipulation;
 }
 
-:where(textarea, select) {
-    field-sizing: content;
+/* Sane cursor override for disabled states */
+:where(button:disabled, [type="button"]:disabled, [type="reset"]:disabled, [type="submit"]:disabled, input:disabled, select:disabled, textarea:disabled) {
+    cursor: not-allowed;
 }
 
+/* Set vertical-only resize for textareas and leverage modern auto-growing text sizing */
 :where(textarea) {
     resize: vertical;
-    min-block-size: 3lh;
+    field-sizing: content; /* Natively grows textarea height as the user types (Chrome 123+) */
 }
 
-::placeholder {
-    color: var(--b-form-control-placeholder);
-    opacity: 1;
+/* Standardize search input behaviors and clear inner padding offsets in WebKit */
+:where(input[type="search"]) {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+}
+:where(::-webkit-search-decoration, ::-webkit-search-cancel-button) {
+    -webkit-appearance: none;
 }
 
-:where(:focus-visible) {
+/* Correct consistent inner spin buttons sizing inside number inputs */
+:where(::-webkit-inner-spin-button, ::-webkit-outer-spin-button) {
+    height: auto;
+}
+
+/* Ensure file upload inputs inherit fonts and default styles predictably */
+:where(::-webkit-file-upload-button) {
+    -webkit-appearance: button;
+    font: inherit;
+}
+
+/* ============================================================
+   5. NATIVE TYPOGRAPHY & LIST NORMALIZATION
+   ============================================================ */
+
+/* Unstyle anchor links that do not have a class, making them look native and accessible */
+:where(a:not([class])) {
+    text-decoration-skip-ink: auto;
+    color: currentColor;
+}
+
+/* Unstyle lists that are explicitly marked with a list role (used as layout wrappers) */
+:where(ul[role="list"], ol[role="list"]) {
+    list-style: none;
+}
+
+/* Remove default quotation marks injected by browsers on quotes and blockquotes */
+:where(blockquote, q) {
+    quotes: none;
+}
+:where(blockquote::before, blockquote::after, q::before, q::after) {
+    content: none;
+}
+
+/* Normalize subscripts and superscripts positioning without affecting line-height offsets */
+:where(sub, sup) {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+:where(sup) {
+    top: -0.5em;
+}
+:where(sub) {
+    bottom: -0.25em;
+}
+
+/* ============================================================
+   6. TABLES & PROGRESS BARS
+   ============================================================ */
+
+/* Standardize table cell alignments, borders collapse, and cell paddings */
+:where(table) {
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-align: left;
+}
+
+:where(caption, th, td) {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: middle;
+}
+
+/* Align progress bar baselines uniformly */
+:where(progress) {
+    vertical-align: baseline;
+}
+
+/* ============================================================
+   7. INTERACTIVE ACCESSIBILITY
+   ============================================================ */
+
+/* Unstyle the native details summary arrow markers across WebKit and Gecko engines */
+:where(summary) {
+    cursor: pointer;
+    list-style: none; /* Modern standard arrow unstyling */
+}
+:where(summary::-webkit-details-marker) {
+    display: none; /* Legacy Safari arrow unstyling */
+}
+
+/* Hide default, blunt focus rings for mouse/touch users while preserving it for keyboard navigation */
+:where(:focus:not(:focus-visible)) {
     outline: none;
-    box-shadow: var(--b-focus-ring);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    :where(:focus-visible) {
-        transition: box-shadow var(--b-duration-fast) var(--b-ease-out);
+/* ============================================================
+   8. MEDIA QUERY REDUCED MOTION SAFEGUARDS
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    :where(*, *::before, *::after) {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }
-
-:where(table) {
-    text-indent: 0;
-    border-color: inherit;
-    border-collapse: collapse;
-}
-
-:where(hr) {
-    height: var(--b-stroke-default);
-    background-color: var(--b-border-subtle);
-    margin-block: var(--b-space-6);
-}
-
-:where([hidden]) { display: none !important; }
-::-webkit-search-decoration { -webkit-appearance: none; }
-::-webkit-file-upload-button { font: inherit; -webkit-appearance: button; }
-summary { display: list-item; }
