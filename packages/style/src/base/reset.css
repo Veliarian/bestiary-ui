@@ -214,6 +214,9 @@
 /* Align progress bar baselines uniformly */
 :where(progress) {
     vertical-align: baseline;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 /* ============================================================

@@ -87,6 +87,9 @@
 /* --- 3.2 Paragraphs --- */
 
 :where(p) {
+    font-size: var(--b-body-size);
+    font-weight: var(--b-body-weight);
+    line-height: var(--b-body-leading);
     margin-block-end: var(--b-paragraph-spacing);
 }
 
@@ -123,6 +126,9 @@
     padding-inline-start: var(--b-space-4);
     border-inline-start: var(--b-stroke-strong) solid var(--b-primary-solid);
     margin-block-end: var(--b-paragraph-spacing);
+    font-size: var(--b-body-size);
+    font-weight: var(--b-body-weight);
+    line-height: var(--b-body-leading);
     font-style: italic;
     color: color-mix(in oklch, currentColor 85%, transparent);
 }
@@ -318,6 +324,7 @@
     color: var(--b-on-surface);
     border: var(--b-stroke-default) solid var(--b-border-default);
     border-radius: var(--b-radius-interactive);
+    outline: none;
     transition: all var(--b-duration-normal) var(--b-ease-base);
 }
 
@@ -327,8 +334,7 @@
 
 :where(input[type="text"]:focus-visible, input[type="password"]:focus-visible, input[type="email"]:focus-visible, input[type="tel"]:focus-visible, input[type="number"]:focus-visible, input[type="search"]:focus-visible, input[type="url"]:focus-visible, textarea:focus-visible) {
     border-color: var(--b-focus-ring);
-    outline: var(--b-stroke-focus) solid var(--b-focus-ring);
-    outline-offset: var(--b-focus-ring-offset);
+    outline: none;
 }
 
 :where(input::placeholder, textarea::placeholder) {
@@ -351,6 +357,7 @@
     background-repeat: no-repeat;
     background-position: right var(--b-space-3) center;
     background-size: 1.25em;
+    outline: none;
     transition: all var(--b-duration-normal) var(--b-ease-base);
 }
 
@@ -360,8 +367,7 @@
 
 :where(select:focus-visible) {
     border-color: var(--b-focus-ring);
-    outline: var(--b-stroke-focus) solid var(--b-focus-ring);
-    outline-offset: var(--b-focus-ring-offset);
+    outline: none;
 }
 
 :where(option, optgroup) {
@@ -475,6 +481,7 @@
     border-radius: var(--b-radius-full);
     background-color: var(--b-bg-surface);
     overflow: hidden;
+    accent-color: var(--b-primary-solid);
 }
 
 :where(progress::-webkit-progress-bar) {

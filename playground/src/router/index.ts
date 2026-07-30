@@ -171,6 +171,13 @@ const router = createRouter({
             name: "spin",
             component: () => import("../views/SpinView.vue"),
             meta: {category: "Feedback", title: "Spin"}
+        },
+
+        {
+            path: '/base-style',
+            name: 'base-style',
+            component: () => import("../views/BaseStyleView.vue"),
+            meta: {category: "Style", title: "Base Style"}
         }
     ]
 });
