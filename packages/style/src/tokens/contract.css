@@ -280,9 +280,11 @@
 /* --- 2.6 COMPOSITE SHADOW ENGINE --- */
 
 /* Raw OKLCH channels used as the color base for layered shadow calculations */
-@property --b-shadow-color-channels { syntax: "<number>+"; inherits: true; initial-value: 0.18 0.01 85; }
+@property --b-shadow-color-channels      { syntax: "<number>+"; inherits: true; initial-value: 0.18 0.01 85; }
+/* Color channels used specifically for layered text shadow color calculations */
+@property --b-text-shadow-color-channels { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
 /* Default alpha opacity of the shadow layers */
-@property --b-shadow-opacity        { syntax: "<percentage>"; inherits: true; initial-value: 8%; }
+@property --b-shadow-opacity             { syntax: "<percentage>"; inherits: true; initial-value: 8%; }
 
 /* Soft micro-shadow formula for buttons and inline interactive badges */
 @property --b-shadow-sm { syntax: "*"; inherits: true; initial-value: 0 1px 2px 0 oklch(var(--b-shadow-color-channels) / var(--b-shadow-opacity)); }

@@ -1,5 +1,21 @@
 :where(html) {
-    --b-font-sans:  ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --b-font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    /* --- 1. CORE SYSTEM STACKS --- */
+    --b-font-sans:  ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --b-font-serif: ui-serif, Cambria, "Times New Roman", Times, serif;
     --b-font-mono:  ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+    /* --- 2. SANS-SERIF PRIMITIVES --- */
+    --b-font-sans-inter:     "Inter", var(--b-font-sans);
+    --b-font-sans-roboto:    "Roboto", var(--b-font-sans);
+    --b-font-sans-helvetica: "Helvetica Neue", "Helvetica", "Arial", var(--b-font-sans);
+
+    /* --- 3. SERIF PRIMITIVES --- */
+    --b-font-serif-georgia:      "Georgia", var(--b-font-serif);
+    --b-font-serif-merriweather: "Merriweather", var(--b-font-serif);
+    --b-font-serif-garamond:     "EB Garamond", "Cormorant Garamond", var(--b-font-serif);
+
+    /* --- 4. MONOSPACE PRIMITIVES (Code / Technical Data) --- */
+    --b-font-mono-fira:      "Fira Code", "Fira Mono", var(--b-font-mono);
+    --b-font-mono-jetbrains: "JetBrains Mono", var(--b-font-mono);
+    --b-font-mono-consolas:  "Consolas", var(--b-font-mono);
 }

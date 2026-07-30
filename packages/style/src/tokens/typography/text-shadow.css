@@ -1,9 +1,3 @@
-@property --b-text-shadow-color-channels {
-    syntax: "<number>+";
-    inherits: true;
-    initial-value: 0 0 0;
-}
-
 :where(html) {
     --b-text-shadow-alpha-2xs: 15%;
     --b-text-shadow-alpha-xs: 20%;

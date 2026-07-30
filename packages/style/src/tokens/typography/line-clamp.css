@@ -1,10 +1,9 @@
 :where(html) {
-    --b-line-clamp-1:  1;
-    --b-line-clamp-2:  2;
-    --b-line-clamp-3:  3;
-    --b-line-clamp-4:  4;
-    --b-line-clamp-5:  5;
-    --b-line-clamp-10: 10;
-
-    --b-line-clamp-none: 9999;
+    --b-line-clamp-1:    1;
+    --b-line-clamp-2:    2;
+    --b-line-clamp-3:    3;
+    --b-line-clamp-4:    4;
+    --b-line-clamp-5:    5;
+    --b-line-clamp-10:   10;
+    --b-line-clamp-none: none;
 }
