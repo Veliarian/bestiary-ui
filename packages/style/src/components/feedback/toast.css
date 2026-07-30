@@ -152,7 +152,7 @@
 }
 
 :where(.b-toast-message__close:hover) {
-    background-color: var(--b-surface-hover, rgba(128, 128, 128, 0.1));
+    background-color: var(--b-overlay-hover, rgba(128, 128, 128, 0.1));
     color: var(--b-toast-text-color);
 }
 

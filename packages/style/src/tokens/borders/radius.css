@@ -1,12 +1,4 @@
-@property --b-radius {
-    syntax: "<length>";
-    inherits: true;
-    initial-value: 0px;
-}
-
 :where(html) {
-    --b-radius-factor: 1;
-
     --b-radius-xs:  0.125rem;
     --b-radius-sm:  0.25rem;
     --b-radius-md:  0.375rem;

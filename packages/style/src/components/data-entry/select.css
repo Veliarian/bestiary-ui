@@ -3,38 +3,27 @@
  */
 
 /* ============================================================
-   1. B-SELECT COMPONENT
+   1. B-SELECT COMPONENT (Trigger)
    ============================================================ */
 :where(.b-select) {
-    /* --- Tokens --- */
-    --b-select-background:              var(--b-surface-section);
-    --b-select-border-color:    var(--b-border-default);
-    --b-select-radius:          var(--b-radius-interactive);
-    --b-select-color:           var(--b-text-primary);
-    --b-select-placeholder:     var(--b-text-muted);
+    /* --- Trigger Tokens --- */
+    --b-select-background:          var(--b-surface-section);
+    --b-select-border-color:        var(--b-border-default);
+    --b-select-radius:              var(--b-radius-interactive);
+    --b-select-color:               var(--b-text-primary);
+    --b-select-placeholder:         var(--b-text-muted);
 
-    --b-select-hover-border:    var(--b-stroke-strong);
-    --b-select-focus-border:    var(--b-primary-outline-border);
-    --b-select-invalid-border:  var(--b-error-outline-border);
-    --b-select-disabled-background:     var(--b-surface-ground);
+    --b-select-hover-border:        var(--b-stroke-strong);
+    --b-select-focus-border:        var(--b-primary-outline-border);
+    --b-select-invalid-border:      var(--b-error-outline-border);
+    --b-select-disabled-background: var(--b-surface-ground);
 
-    --b-select-padding-y:       var(--b-space-2);
-    --b-select-padding-x:       var(--b-space-3);
-    --b-select-font-size:       var(--b-text-sm);
-    --b-select-height:          var(--b-control-size-md);
+    --b-select-padding-y:           var(--b-space-2);
+    --b-select-padding-x:           var(--b-space-3);
+    --b-select-font-size:           var(--b-text-sm);
+    --b-select-height:              var(--b-control-size-md);
 
-    --b-select-transition:      border-color var(--b-duration-fast), box-shadow var(--b-duration-fast);
-
-    /* Overlay Tokens */
-    --b-select-overlay-background:      var(--b-surface-overlay);
-    --b-select-overlay-border:  var(--b-border-subtle);
-    --b-select-overlay-shadow:  var(--b-shadow-lg);
-    --b-select-overlay-radius:  var(--b-radius-lg);
-    --b-select-item-padding:    var(--b-space-2) var(--b-space-3);
-
-    --b-select-item-hover-background:   var(--b-overlay-hover);
-    --b-select-item-selected-background:var(--b-primary-subtle-background);
-    --b-select-item-selected-color: var(--b-primary-solid-text);
+    --b-select-transition:          border-color var(--b-duration-fast), box-shadow var(--b-duration-fast);
 
     /* --- Base Styles --- */
     display: inline-flex;
@@ -139,11 +128,22 @@
 }
 
 /* ============================================================
-   4. OVERLAY & LIST
+   4. OVERLAY & LIST (Teleported)
    ============================================================ */
 :where(.b-select__overlay) {
+    /* --- Overlay Tokens (Defined here to survive Teleport) --- */
+    --b-select-overlay-background:       var(--b-surface-section);
+    --b-select-overlay-border:           var(--b-border-subtle);
+    --b-select-overlay-shadow:           var(--b-shadow-lg);
+    --b-select-overlay-radius:           var(--b-radius-lg);
+
+    --b-select-item-padding:             var(--b-space-2) var(--b-space-3);
+    --b-select-item-hover-background:    var(--b-overlay-hover);
+    --b-select-item-selected-background: var(--b-primary-subtle-background);
+    --b-select-item-selected-color:      var(--b-primary-solid-text);
+
     position: absolute;
-    z-index: var(--b-z-dropdown, 1000);
+    z-index: var(--b-z-popover);
     background-color: var(--b-select-overlay-background);
     border: 1px solid var(--b-select-overlay-border);
     border-radius: var(--b-select-overlay-radius);
@@ -164,7 +164,7 @@
     width: 100%;
     box-sizing: border-box;
     padding: var(--b-space-2) var(--b-space-7) var(--b-space-2) var(--b-space-3);
-    background: var(--b-surface-section);
+    background-color: var(--b-surface-section);
     border: 1px solid var(--b-border-default);
     border-radius: var(--b-radius-interactive);
     color: var(--b-text-primary);

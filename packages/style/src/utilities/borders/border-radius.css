@@ -1,0 +1,20 @@
+@property --b-radius-custom {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0px;
+}
+
+.rounded-custom { border-radius: var(--b-radius-custom) !important; }
+
+.rounded-xs  { border-radius: var(--b-radius-xs) !important; }
+.rounded-sm  { border-radius: var(--b-radius-sm) !important; }
+.rounded-md  { border-radius: var(--b-radius-md) !important; }
+.rounded-lg  { border-radius: var(--b-radius-lg) !important; }
+.rounded-xl  { border-radius: var(--b-radius-xl) !important; }
+.rounded-2xl { border-radius: var(--b-radius-2xl) !important; }
+.rounded-3xl { border-radius: var(--b-radius-3xl) !important; }
+.rounded-4xl { border-radius: var(--b-radius-4xl) !important; }
+
+.rounded-none    { border-radius: 0 !important; }
+.rounded-full    { border-radius: var(--b-radius-full) !important; }
+.rounded-inherit { border-radius: var(--b-radius-inherit) !important; }
