@@ -123,13 +123,13 @@
 
 /* --- 1.4 ICON SIZE --- */
 
-/* Small icon size (16px equivalent) */
+/* Small icon size */
 @property --b-icon-size-sm { syntax: "<length-percentage>"; inherits: true; initial-value: 16px; }
-/* Medium icon size (20px equivalent, standard layout) */
+/* Medium icon size */
 @property --b-icon-size-md { syntax: "<length-percentage>"; inherits: true; initial-value: 20px; }
-/* Large icon size (24px equivalent) */
+/* Large icon size */
 @property --b-icon-size-lg { syntax: "<length-percentage>"; inherits: true; initial-value: 24px; }
-/* Extra large icon size (32px equivalent) */
+/* Extra large icon size */
 @property --b-icon-size-xl { syntax: "<length-percentage>"; inherits: true; initial-value: 32px; }
 
 /* --- 1.5 RADIUS --- */
@@ -157,13 +157,13 @@
 /* --- 1.7 BREAKPOINTS --- */
 
 /* Mobile landscape / small tablet responsive breakpoint (640px) */
-@property --b-breakpoint-sm { syntax: "<length-percentage>"; inherits: true; initial-value: 640px; }
+@property --b-screen-sm { syntax: "<length-percentage>"; inherits: true; initial-value: 640px; }
 /* Portrait tablet / medium screen responsive breakpoint (768px) */
-@property --b-breakpoint-md { syntax: "<length-percentage>"; inherits: true; initial-value: 768px; }
+@property --b-screen-md { syntax: "<length-percentage>"; inherits: true; initial-value: 768px; }
 /* Desktop / large monitor responsive breakpoint (1024px) */
-@property --b-breakpoint-lg { syntax: "<length-percentage>"; inherits: true; initial-value: 1024px; }
+@property --b-screen-lg { syntax: "<length-percentage>"; inherits: true; initial-value: 1024px; }
 /* Widescreen / extra large monitor responsive breakpoint (1280px) */
-@property --b-breakpoint-xl { syntax: "<length-percentage>"; inherits: true; initial-value: 1280px; }
+@property --b-screen-xl { syntax: "<length-percentage>"; inherits: true; initial-value: 1280px; }
 
 /* --- 1.8 SPACE SCALE --- */
 
@@ -279,25 +279,39 @@
 
 /* --- 2.6 COMPOSITE SHADOW ENGINE --- */
 
-/* Raw OKLCH channels used as the color base for layered shadow calculations */
+/* --- 2.6.1 Outer & Inner Box-Shadow Channels --- */
+/* Raw OKLCH channels used as the color base for default box-shadow and inset-shadow */
 @property --b-shadow-color-channels { syntax: "<number>+"; inherits: true; initial-value: 0.18 0.01 85; }
 
-/* Baseline shadow role for interactive elements (buttons, badge focus states) */
-@property --b-shadow-interactive    { syntax: "*"; inherits: true; initial-value: none; }
-/* Baseline shadow role for layout containers (cards, panels, section blocks) */
-@property --b-shadow-container      { syntax: "*"; inherits: true; initial-value: none; }
-/* Baseline shadow role for floating components (modals, dropdowns, toast alerts) */
-@property --b-shadow-floating       { syntax: "*"; inherits: true; initial-value: none; }
+/* --- 2.6.2 SVG & Filter Drop-Shadow Channels --- */
+/* Raw OKLCH channels used specifically for filter drop-shadow calculations */
+@property --b-drop-shadow-color-channels { syntax: "<number>+"; inherits: true; initial-value: 0.18 0.01 85; }
 
+/* --- 2.6.3 Typography Text-Shadow Channels --- */
+/* Raw OKLCH channels used specifically for typography text-shadow calculations */
+@property --b-text-shadow-color-channels { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
+
+/* --- 2.6.4 Semantic Box-Shadow Roles (Mapped to shadow.css primitives) --- */
+/* Baseline shadow role for interactive elements (buttons, badge focus states) */
+@property --b-shadow-interactive { syntax: "*"; inherits: true; initial-value: none; }
+/* Baseline shadow role for layout containers (cards, panels, section blocks) */
+@property --b-shadow-container   { syntax: "*"; inherits: true; initial-value: none; }
+/* Baseline shadow role for floating components (modals, dropdowns, toast alerts) */
+@property --b-shadow-floating    { syntax: "*"; inherits: true; initial-value: none; }
+/* Baseline inset shadow role for recessed inputs and pressed interactive states */
+@property --b-shadow-inset { syntax: "*"; inherits: true; initial-value: none; }
+
+/* --- 2.6.5 Semantic Filter Drop-Shadow Roles (Mapped to drop-shadow.css primitives) --- */
 /* Baseline drop-shadow filter role for flat elements (icons, badges) */
 @property --b-drop-shadow           { syntax: "*"; inherits: true; initial-value: none; }
 /* Prominent drop-shadow filter role for floating arrow elements (tooltips, popovers with beaks) */
 @property --b-drop-shadow-floating  { syntax: "*"; inherits: true; initial-value: none; }
 
-/* Color channels used specifically for layered text shadow color calculations */
-@property --b-text-shadow-color-channels { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
-/* Baseline text-shadow role for typography (e.g. headers or button labels on busy backgrounds) */
-@property --b-text-shadow                { syntax: "*"; inherits: true; initial-value: none; }
+/* --- 2.6.6 Semantic Typography Text-Shadow Roles (Mapped to text-shadow.css primitives) --- */
+/* Baseline text-shadow role for standard body typography and button labels */
+@property --b-text-shadow           { syntax: "*"; inherits: true; initial-value: none; }
+/* Prominent text-shadow role optimized for large, accented display headers (H1 - H3) */
+@property --b-text-shadow-display   { syntax: "*"; inherits: true; initial-value: none; }
 
 
 /* ============================================================
