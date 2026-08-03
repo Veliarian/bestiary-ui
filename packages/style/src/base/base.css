@@ -458,6 +458,7 @@
     background-color: color-mix(in oklch, var(--b-primary-solid) 92%, var(--b-bg-contrast));
 }
 
+/* Micro-compression click animation mapped to active state constants */
 :where(button:not([class]):not(:disabled):active, input[type="submit"]:not([class]):not(:disabled):active, input[type="button"]:not([class]):not(:disabled):active) {
     transform: scale(var(--b-state-active-scale));
     filter: brightness(var(--b-state-active-brightness));
@@ -481,6 +482,12 @@
     border-radius: var(--b-radius-full);
     background-color: var(--b-bg-surface);
     overflow: hidden;
+
+    /* Disables native OS widget appearance to unlock custom colors */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
     accent-color: var(--b-primary-solid);
 }
 
@@ -659,7 +666,7 @@
     color: var(--b-on-section);
     border-radius: var(--b-radius-floating);
     padding: var(--b-space-6);
-    box-shadow: var(--b-shadow-lg);
+    box-shadow: var(--b-shadow-floating); /* Binds dialog drop shadow to the contract semantic floating shadow */
     max-width: var(--b-breakpoint-sm);
     width: calc(100% - var(--b-space-8));
 }

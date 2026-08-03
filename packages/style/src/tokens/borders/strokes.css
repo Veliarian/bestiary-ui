@@ -1,11 +1,4 @@
-@property --b-stroke {
-    syntax: "<length>";
-    inherits: true;
-    initial-value: 0px;
-}
-
 :where(html) {
-    --b-stroke-none: 0px;
     --b-stroke-sm:   1px;
     --b-stroke-md:   2px;
     --b-stroke-lg:   3px;

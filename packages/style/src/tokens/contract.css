@@ -280,9 +280,24 @@
 /* --- 2.6 COMPOSITE SHADOW ENGINE --- */
 
 /* Raw OKLCH channels used as the color base for layered shadow calculations */
-@property --b-shadow-color-channels      { syntax: "<number>+"; inherits: true; initial-value: 0.18 0.01 85; }
+@property --b-shadow-color-channels { syntax: "<number>+"; inherits: true; initial-value: 0.18 0.01 85; }
+
+/* Baseline shadow role for interactive elements (buttons, badge focus states) */
+@property --b-shadow-interactive    { syntax: "*"; inherits: true; initial-value: none; }
+/* Baseline shadow role for layout containers (cards, panels, section blocks) */
+@property --b-shadow-container      { syntax: "*"; inherits: true; initial-value: none; }
+/* Baseline shadow role for floating components (modals, dropdowns, toast alerts) */
+@property --b-shadow-floating       { syntax: "*"; inherits: true; initial-value: none; }
+
+/* Baseline drop-shadow filter role for flat elements (icons, badges) */
+@property --b-drop-shadow           { syntax: "*"; inherits: true; initial-value: none; }
+/* Prominent drop-shadow filter role for floating arrow elements (tooltips, popovers with beaks) */
+@property --b-drop-shadow-floating  { syntax: "*"; inherits: true; initial-value: none; }
+
 /* Color channels used specifically for layered text shadow color calculations */
 @property --b-text-shadow-color-channels { syntax: "<number>+"; inherits: true; initial-value: 0 0 0; }
+/* Baseline text-shadow role for typography (e.g. headers or button labels on busy backgrounds) */
+@property --b-text-shadow                { syntax: "*"; inherits: true; initial-value: none; }
 
 
 /* ============================================================

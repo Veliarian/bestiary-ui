@@ -1,14 +1,11 @@
 :where(html) {
-    --b-radius-xs:  0.125rem;
-    --b-radius-sm:  0.25rem;
-    --b-radius-md:  0.375rem;
-    --b-radius-lg:  0.5rem;
-    --b-radius-xl:  0.75rem;
-    --b-radius-2xl: 1rem;
-    --b-radius-3xl: 1.5rem;
-    --b-radius-4xl: 2rem;
-
-    --b-radius-none:    0px;
-    --b-radius-full:    1e5px;
-    --b-radius-inherit: inherit;
+    --b-radius-xs:   0.125rem;
+    --b-radius-sm:   0.25rem;
+    --b-radius-md:   0.375rem;
+    --b-radius-lg:   0.5rem;
+    --b-radius-xl:   0.75rem;
+    --b-radius-2xl:  1rem;
+    --b-radius-3xl:  1.5rem;
+    --b-radius-4xl:  2rem;
+    --b-radius-full: 1e5px;
 }
