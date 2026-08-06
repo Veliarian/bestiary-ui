@@ -1,8 +1,17 @@
+:where(html) {
+    --b-focus-ring-sm: 1px;
+    --b-focus-ring-md: 2px;
+    --b-focus-ring-lg: 3px;
+
+    --b-focus-ring-offset-sm: 1px;
+    --b-focus-ring-offset-md: 2px;
+    --b-focus-ring-offset-lg: 3px;
+}
+
 :where(*) {
     --b-ring:
-            0 0 0 var(--b-focus-ring-offset) var(--b-bg-section, var(--b-bg-ground)),
+            0 0 0 var(--b-bg-section, var(--b-bg-ground)),
             0 0 0 calc(var(--b-focus-ring-offset) + var(--b-stroke-focus)) var(--b-focus-ring);
-
     --b-ring-inset:
             inset 0 0 0 var(--b-stroke-focus) var(--b-focus-ring);
 }

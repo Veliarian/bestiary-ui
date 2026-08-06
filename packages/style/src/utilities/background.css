@@ -1,0 +1,51 @@
+/**
+ * Bestiary UI — Background State Engine & Utilities
+ * --------------------------------------------------
+ * Binds all background utility classes to our dynamic State Engine.
+ * Supports automated, high-performance transitions, hovers, and active clicks.
+ */
+
+/* --- 1. CORE BACKGROUND STATE ENGINE --- */
+:where([class*="bg-"]) {
+    background-color: var(--_bg-current, transparent);
+    --_bg-current: var(--bg-local);
+    transition: background-color var(--b-duration-normal) var(--b-ease-base);
+}
+
+/* Automatically calculates and mixes the hover color on the fly */
+:where([class*="bg-"]:not(:disabled):hover) {
+    --_bg-current: var(--bg-hover-local, color-mix(in oklch, var(--bg-local) calc(100% - var(--b-state-hover-mix-percentage)), var(--b-contrast-solid)));
+}
+
+/* Automatically calculates and applies click compression and brightness shift */
+:where([class*="bg-"]:not(:disabled):active) {
+    filter: brightness(var(--b-state-active-brightness));
+    transform: scale(var(--b-state-active-scale));
+}
+
+/* --- 2. SEMANTIC SURFACE UTILITIES --- */
+.bg-ground   { --bg-local: var(--b-bg-ground); }
+.bg-section  { --bg-local: var(--b-bg-section); }
+.bg-surface  { --bg-local: var(--b-bg-surface); }
+
+/* --- 3. SEMANTIC COLOR UTILITIES --- */
+.bg-primary   { --bg-local: var(--b-primary-solid); }
+.bg-secondary { --bg-local: var(--b-secondary-solid); }
+.bg-info      { --bg-local: var(--b-info-solid); }
+.bg-success   { --bg-local: var(--b-success-solid); }
+.bg-warn      { --bg-local: var(--b-warn-solid); }
+.bg-error     { --bg-local: var(--b-error-solid); }
+.bg-contrast  { --bg-local: var(--b-contrast-solid); }
+
+/* --- 4. RAW PALETTE UTILITIES: AMBER --- */
+.bg-amber-50   { --bg-local: var(--b-amber-50); }
+.bg-amber-100  { --bg-local: var(--b-amber-100); }
+.bg-amber-200  { --bg-local: var(--b-amber-200); }
+.bg-amber-300  { --bg-local: var(--b-amber-300); }
+.bg-amber-400  { --bg-local: var(--b-amber-400); }
+.bg-amber-500  { --bg-local: var(--b-amber-500); }
+.bg-amber-600  { --bg-local: var(--b-amber-600); }
+.bg-amber-700  { --bg-local: var(--b-amber-700); }
+.bg-amber-800  { --bg-local: var(--b-amber-800); }
+.bg-amber-900  { --bg-local: var(--b-amber-900); }
+.bg-amber-950  { --bg-local: var(--b-amber-950); }
